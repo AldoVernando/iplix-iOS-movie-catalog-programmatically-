@@ -80,25 +80,10 @@ class MovieDetailViewController: UIViewController {
     @IBAction func reviewBarBtn(_ sender: UIBarButtonItem) {
     }
     
-    func changeColor(sender: UIBarButtonItem) {
-        
-        aboutBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
-        infoBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
-        reviewBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
-        sender.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-    }
-    
-    func showViewController(controller: String) -> UIViewController {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: controller)
-        
-        return viewController
-    }
-    
 }
 
+
+// MARK: UIImageView
 extension UIImageView
 {
     func addBlurEffect()
@@ -113,6 +98,8 @@ extension UIImageView
     
 }
 
+
+// MARK: UIView
 extension UIView {
 
     enum ViewSide {
@@ -133,4 +120,26 @@ extension UIView {
 
         layer.addSublayer(border)
     }
+}
+
+
+extension MovieDetailViewController {
+    
+    func changeColor(sender: UIBarButtonItem) {
+        
+        aboutBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
+        infoBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
+        reviewBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
+        sender.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+    }
+    
+    func showViewController(controller: String) -> UIViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: controller)
+        
+        return viewController
+    }
+    
 }
