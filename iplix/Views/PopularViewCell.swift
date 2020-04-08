@@ -110,6 +110,5 @@ extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getMovie = movies[indexPath.row]
         delegate.gotoDetail(movie: getMovie)
-        //performSegue(withIdentifier:"goToDetail", sender: self)
     }
 }

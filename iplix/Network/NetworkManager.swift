@@ -20,20 +20,30 @@ struct NetworkManager {
     let genreURL = "https://api.themoviedb.org/3/genre/list?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     let moviePageURL = "https://www.themoviedb.org/movie/"
     
-    func getMovies(typeMovie: String, competion: @escaping ([Movie]) -> ()) {
+    func getMovies(typeMovie: String, completion: @escaping ([Movie]) -> ()) {
         
         let finalURL = createURL(type: typeMovie)
         
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
             guard let movies = response.value?.results else { return }
-            competion(movies)
+            completion(movies)
         }
     }
     
-    func getGenres(competion: @escaping ([Genres]) -> ()) {
+    func getMovieDetail(movieId: String, completion: @escaping (MovieDetail) -> ()) {
+        
+        let finalURL = createURL(type: movieId)
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: MovieDetail.self) { response in
+            guard let movie = response.value else { return }
+            completion(movie)
+        }
+    }
+    
+    func getGenres(completion: @escaping ([Genres]) -> ()) {
         AF.request(genreURL, method: .get).responseDecodable(of: ResultGenres.self) { response in
                 guard let genres = response.value?.genres else { return }
-                competion(genres)
+                completion(genres)
             }
     }
     
