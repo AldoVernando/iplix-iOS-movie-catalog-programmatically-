@@ -9,16 +9,20 @@
 import Foundation
 import Alamofire
 
+protocol NetworkDelegate {
+    func reloadTableView()
+}
+
 class NetworkManager {
     
+    var delegate: NetworkDelegate!
+   
     let movieURL = "https://api.themoviedb.org/3/movie"
     let posterURL = "https://image.tmdb.org/t/p/w500"
     let genreURL = "https://api.themoviedb.org/3/genre/list?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     let moviePageURL = "https://www.themoviedb.org/movie/"
     
     var genres: [Genres] = []
-    static let networkInstance = NetworkManager()
-    
     var parameters: [String: String] = [
         "apiKey": "api_key=011476f22113ee2ae9d19f4d511997bc",
         "language": "language=en-US"
@@ -28,6 +32,9 @@ class NetworkManager {
     init() {
         getGenres() { response in
             self.genres = response
+            DispatchQueue.main.async {
+                self.delegate.reloadTableView()
+            }
         }
     }
     
@@ -57,6 +64,18 @@ extension NetworkManager {
         AF.request(finalURL, method: .get).responseDecodable(of: MovieDetail.self) { response in
             guard let movie = response.value else { return }
             completion(movie)
+        }
+    }
+    
+    
+    // Fetch Movie Detail Reviews
+    func getMovieReview(movieId: String, completion: @escaping ([Review]) -> ()) {
+        
+        let finalURL = "\(movieURL)/\(movieId)/reviews?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=1"
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: ReviewResult.self) { response in
+            guard let review = response.value?.results else { return }
+            completion(review)
         }
     }
     

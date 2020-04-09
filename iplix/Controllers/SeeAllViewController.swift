@@ -14,7 +14,7 @@ class SeeAllViewController: UIViewController {
     
     var movies: [Movie] = []
     
-    var network = NetworkManager.networkInstance
+    var network = ViewController.network
     var isWaiting = false
     var page = 1
     var type = ""
@@ -37,7 +37,7 @@ class SeeAllViewController: UIViewController {
 }
 
 
-// MARK: UICollectionViewDelegate & UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+// MARK: UICollectionView
 extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     var movieToSend: Movie?
     var movies: [Movie] = []
     var firstPage: [Movie] = []
-    var network = NetworkManager.networkInstance
+    var network = ViewController.network
     var searchQuery: String = ""
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
 }
 
 
-// MARK: PaginatedTableViewDelegate & PaginatedTableViewDataSource
+// MARK: PaginatedTableView
 extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDataSource {
  
     func numberOfSections(in tableView: UITableView) -> Int {

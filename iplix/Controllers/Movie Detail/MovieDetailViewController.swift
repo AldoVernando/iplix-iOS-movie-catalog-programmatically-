@@ -25,7 +25,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var reviewBarBtn: UIBarButtonItem!
     
     
-    let network = NetworkManager.networkInstance
+    let network = ViewController.network
     var movie: Movie?
     
     override func viewDidLoad() {
@@ -82,6 +82,21 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func reviewBarBtn(_ sender: UIBarButtonItem) {
+        
+        changeColor(sender: sender)
+        let vc = showViewController(controller: "MovieReviewViewController") as! MovieReviewViewController
+        
+        if let mov = movie {
+            vc.movie = mov
+            network.getMovieReview(movieId: String(mov.id!)) { response in
+                vc.reviews = response
+                DispatchQueue.main.async {
+                    self.addChild(vc)
+                    self.contentView.addSubview(vc.view)
+                }
+            }
+        }
+        
     }
     
 }

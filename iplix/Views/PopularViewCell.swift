@@ -20,7 +20,7 @@ class PopularViewCell: UITableViewCell {
     @IBOutlet weak var seeAllBtn: UIButton!
     @IBOutlet weak var viewCollection: UICollectionView!
     
-    var network = NetworkManager.networkInstance
+    var network = ViewController.network
     var movies: [Movie] = []
     var delegate: ViewCellDelegator!
     var type: String = ""
