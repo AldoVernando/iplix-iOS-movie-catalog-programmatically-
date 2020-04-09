@@ -24,6 +24,8 @@ class MovieAboutViewController: UIViewController {
         
     }
     
+    
+    // set scrollview height
     override func viewDidAppear(_ animated: Bool) {
         scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+500)
     }

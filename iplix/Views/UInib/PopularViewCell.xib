@@ -42,6 +42,9 @@
                                             <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
+                                        <connections>
+                                            <action selector="seeAllBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ao8-vr-AW7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="tintColor" red="0.59771522580000003" green="0.83811026840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

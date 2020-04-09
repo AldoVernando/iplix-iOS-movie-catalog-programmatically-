@@ -16,16 +16,12 @@ protocol ViewCellDelegator {
 
 class PopularViewCell: UITableViewCell {
     
-    
-    
     @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet weak var seeAllBtn: UIButton!
     @IBOutlet weak var viewCollection: UICollectionView!
     
-    
+    var network = NetworkManager.networkInstance
     var movies: [Movie] = []
-    var genres: [Genres] = []
-    var network = NetworkManager()
     var delegate: ViewCellDelegator!
     var type: String = ""
     
@@ -37,41 +33,10 @@ class PopularViewCell: UITableViewCell {
         viewCollection.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
     }
     
-    func loadAPI(typeMovie: String){
-        
-        network.getGenres() { response in
-            self.genres = response
-            DispatchQueue.main.async {
-                if self.movies.count > 0 {
-                    self.viewCollection.reloadData()
-                }
-            }
-        }
-        network.getMovies(typeMovie: typeMovie) { response in
-            self.movies = response
-            DispatchQueue.main.async {
-                if self.genres.count > 0 {
-                    self.viewCollection.reloadData()
-                }
-            }
-        }
-        
-    }
-    @IBAction func buttonClicked(_ sender: UIButton) {
-        if sender == seeAllBtn {
-            goToAll(type: type)
-        }
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    func goToAll(type: String) {
+    @IBAction func seeAllBtnPressed(_ sender: UIButton) {
         delegate.goToAll(type: type)
     }
+    
 }
 
 //MARK: - UICollectionView
@@ -85,23 +50,18 @@ extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate 
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
         
-        if let title = cell.title {
-            title.text = movies[indexPath.row].title!
-        }
-        if let image = cell.poster {
-            image.image = nil
-            if let poster = movies[indexPath.row].poster_path {
-                image.sd_setImage(with: URL(string: network.posterURL + poster))
-            }
+        
+        cell.title.text = movies[indexPath.row].title!
+    
+        if let poster = movies[indexPath.row].poster_path {
+            cell.poster.sd_setImage(with: URL(string: network.posterURL + poster))
         }
         
-        if let genreLabel = cell.genre {
-            if let genreId = movies[indexPath.row].genre_ids?.first {
-                let genre = genres.filter({ $0.id == genreId })
-                genreLabel.text = genre[0].name
-            } else {
-                genreLabel.text = " "
-            }
+        if let genreId = movies[indexPath.row].genre_ids?.first {
+            let genre = network.genres.filter({ $0.id == genreId })
+            cell.genre.text = genre[0].name
+        } else {
+            cell.genre.text = " "
         }
         
         return cell
@@ -110,5 +70,21 @@ extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let getMovie = movies[indexPath.row]
         delegate.gotoDetail(movie: getMovie)
+    }
+}
+
+
+// MARK: Functions
+extension PopularViewCell {
+    
+    func loadMovies(typeMovie: String){
+        
+        network.getMovies(typeMovie: typeMovie, page: 1) { response in
+            self.movies = response
+            DispatchQueue.main.async {
+                self.viewCollection.reloadData()
+            }
+        }
+        
     }
 }

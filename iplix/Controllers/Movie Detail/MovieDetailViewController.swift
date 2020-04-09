@@ -25,7 +25,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var reviewBarBtn: UIBarButtonItem!
     
     
-    let network = NetworkManager()
+    let network = NetworkManager.networkInstance
     var movie: Movie?
     
     override func viewDidLoad() {
@@ -37,8 +37,12 @@ class MovieDetailViewController: UIViewController {
         foregroundPoster.layer.borderColor = UIColor.white.cgColor
         
         if let mov = movie {
-            poster.sd_setImage(with: URL(string: network.posterURL + mov.backdrop_path!))
-            foregroundPoster.sd_setImage(with: URL(string: network.posterURL + mov.poster_path!))
+            if let backdrop = mov.backdrop_path {
+                poster.sd_setImage(with: URL(string: network.posterURL + backdrop))
+            }
+            if let poster = mov.poster_path {
+                foregroundPoster.sd_setImage(with: URL(string: network.posterURL + poster))
+            }
             movieTitle.text = mov.title
             releasedDate.text = mov.release_date
             rating.text = String(mov.vote_average!)
@@ -49,7 +53,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func aboutBarBtn(_ sender: UIBarButtonItem) {
@@ -123,17 +127,21 @@ extension UIView {
 }
 
 
+// MARK: Functions
 extension MovieDetailViewController {
     
+    
+    // change selected bar color
     func changeColor(sender: UIBarButtonItem) {
         
         aboutBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
         infoBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
         reviewBarBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
         sender.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
     }
     
+    
+    // show selected view controller
     func showViewController(controller: String) -> UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

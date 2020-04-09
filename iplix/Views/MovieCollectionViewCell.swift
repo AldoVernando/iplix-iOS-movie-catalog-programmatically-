@@ -14,11 +14,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var genre: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
     }
 

@@ -24,7 +24,14 @@ class MovieInformationViewController: UIViewController {
             setData(movie: mov)
         }
     }
+}
+
+
+// MARK: Functions
+extension MovieInformationViewController {
     
+    
+    // set up the movie's data
     func setData(movie: MovieDetail) {
         getGenre(mov: movie)
         getLanguage(mov: movie)
@@ -32,6 +39,8 @@ class MovieInformationViewController: UIViewController {
         getCountry(mov: movie)
     }
     
+    
+    // generate movie's genre
     func getGenre(mov: MovieDetail) {
         var genreText = ""
         for (index, genre) in mov.genres!.enumerated() {
@@ -44,6 +53,8 @@ class MovieInformationViewController: UIViewController {
         genre.text = genreText
     }
     
+    
+    // generate movie's language
     func getLanguage(mov: MovieDetail) {
         var langText = ""
         for (index, lang) in mov.spoken_languages!.enumerated() {
@@ -56,6 +67,8 @@ class MovieInformationViewController: UIViewController {
         language.text = langText
     }
     
+    
+    // generate movie's company production
     func getCompany(mov: MovieDetail) {
         var compText = ""
         for (index, comp) in mov.production_companies!.enumerated() {
@@ -68,6 +81,8 @@ class MovieInformationViewController: UIViewController {
         companies.text = compText
     }
     
+    
+    // generate movie's country production
     func getCountry(mov: MovieDetail) {
         var countryText = ""
         for (index, country) in mov.production_countries!.enumerated() {

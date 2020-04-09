@@ -17,8 +17,8 @@ class SearchViewController: UIViewController {
     
     var movieToSend: Movie?
     var movies: [Movie] = []
-    var genres: [Genres] = []
-    var network = NetworkManager()
+    var firstPage: [Movie] = []
+    var network = NetworkManager.networkInstance
     var searchQuery: String = ""
     
     override func viewDidLoad() {
@@ -47,11 +47,16 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
     }
     
     func loadMore(_ pageNumber: Int, _ pageSize: Int, onSuccess: ((Bool) -> Void)?, onError: ((Error) -> Void)?) {
-        if pageNumber == 1 { movies.removeAll() }
-
-        if genres.isEmpty {
-            loadAPI(query: "")
+        
+        if movies.isEmpty {
+            loadMovies()
             onSuccess?(true)
+        }
+        else if pageNumber == 1 {
+            movies = firstPage
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                onSuccess?(true)
+            }
         }
         else {
             network.getMovieWithQuery(query: searchQuery ,page: pageNumber)
@@ -59,6 +64,7 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
                 self.movies.append(contentsOf: response)
                 
                 let moreData = !response.isEmpty
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     onSuccess?(moreData)
                 }
@@ -78,7 +84,11 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else {
             fatalError("error")
         }
-       
+        
+        if movies.isEmpty {
+            
+        }
+        
         let movie = movies[indexPath.row]
         
         if let posterPath = movie.poster_path {
@@ -87,7 +97,7 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
         cell.title.text = movie.title
         
         if let genreId = movie.genre_ids?.first {
-            let genre = genres.filter({ $0.id == genreId })
+            let genre = network.genres.filter({ $0.id == genreId })
             cell.genre.text = genre[0].name
         } else {
             cell.genre.text = " "
@@ -107,8 +117,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchQuery = searchText
-        
-//        loadAPI(query: searchText)
+        loadMovies()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -121,6 +130,8 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: SearchViewController Functions
 extension SearchViewController {
     
+    
+    // prepare before perform segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToDetail" {
@@ -133,34 +144,34 @@ extension SearchViewController {
         
     }
     
+    
+    // dismiss keyboard when tapped out of keyboard
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
+    
+    // dismiss keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func loadAPI(query: String){
-        
-        if self.genres.isEmpty {
-            network.getGenres() { response in
-                self.genres = response
-            }
-        }
-        
-        network.getMovieWithQuery(query: query, page: 1) { response in
+    
+    // load movies by query
+    func loadMovies() {
+        network.getMovieWithQuery(query: searchQuery, page: 1) { response in
             self.movies = response
+            self.firstPage = response
             DispatchQueue.main.async {
-                if self.genres.count > 0 {
-                    self.tableView.reloadData()
-                }
+                self.tableView.reloadData()
             }
         }
     }
     
+    
+    // perform segue to movie detail
     func gotoDetail(movie: Movie) {
         movieToSend = movie
         performSegue(withIdentifier:"goToDetail", sender: self)
