@@ -9,10 +9,6 @@
 import Foundation
 import Alamofire
 
-protocol NetworkDelegate {
-    func reloadTableView()
-}
-
 class NetworkManager {
     
     var delegate: NetworkDelegate!
@@ -21,7 +17,7 @@ class NetworkManager {
     let posterURL = "https://image.tmdb.org/t/p/w500"
     let genreURL = "https://api.themoviedb.org/3/genre/list?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     let moviePageURL = "https://www.themoviedb.org/movie/"
-    let personURL = "https://api.themoviedb.org/3/person/popular?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
+    let personURL = "https://api.themoviedb.org/3/person"
     
     var genres: [Genres] = []
     var parameters: [String: String] = [
@@ -48,7 +44,7 @@ extension NetworkManager {
     // Fetch Movie List
     func getMovies(typeMovie: String, page: Int, completion: @escaping ([Movie]) -> ()) {
         
-        let finalURL = createURL(type: typeMovie, page: page)
+        let finalURL = createMovieURL(type: typeMovie, page: page)
         
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
             guard let movies = response.value?.results else { return }
@@ -60,7 +56,7 @@ extension NetworkManager {
     // Fetch Movie Detail
     func getMovieDetail(movieId: String, completion: @escaping (MovieDetail) -> ()) {
         
-        let finalURL = createURL(type: movieId, page: 1)
+        let finalURL = createMovieURL(type: movieId, page: 1)
         
         AF.request(finalURL, method: .get).responseDecodable(of: MovieDetail.self) { response in
             guard let movie = response.value else { return }
@@ -89,7 +85,7 @@ extension NetworkManager {
         if query != "" {
             finalURL = "https://api.themoviedb.org/3/search/movie?\(String(describing: parameters["apiKey"]!))&\(String(describing: parameters["language"]!))&query=\(query)&page=\(page)"
         } else {
-            finalURL = createURL(type: "upcoming", page: page)
+            finalURL = createMovieURL(type: "upcoming", page: page)
         }
         
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
@@ -108,19 +104,48 @@ extension NetworkManager {
     }
     
     
-    // Generate URL
-    func createURL(type: String, page: Int) -> String{
+    // Fetch popular persons
+    func getPersons(completion: @escaping ([Person]) -> ()) {
+        
+        let finalURL = createPersonURL(type: "popular")
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: PersonResult.self) { response in
+                guard let persons = response.value?.results else { return }
+                completion(persons)
+            }
+    }
+    
+    
+    // Fetch Person Detail
+    func getPersonDetail(id: Int, completion: @escaping (Person) -> ()) {
+        
+        let finalURL = createPersonURL(type: String(id))
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: Person.self) { response in
+            guard let person = response.value else { return }
+                completion(person)
+            }
+    }
+    
+    
+    // Generate Movie URL
+    func createMovieURL(type: String, page: Int) -> String{
         let URL = "\(movieURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
         
         return URL
     }
     
     
-    // Fetch popular persons
-    func getPersons(completion: @escaping ([Person]) -> ()) {
-        AF.request(personURL, method: .get).responseDecodable(of: PersonResult.self) { response in
-                guard let persons = response.value?.results else { return }
-                completion(persons)
-            }
+    // Generate Person URL
+    func createPersonURL(type: String) -> String{
+        let URL = "\(personURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)"
+        
+        return URL
     }
+}
+
+
+// MARK: NetworkDelegate
+protocol NetworkDelegate {
+    func reloadTableView()
 }

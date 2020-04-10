@@ -8,10 +8,12 @@
 
 import Foundation
 
+// model to fetch JSON object result
 struct ResultGenres: Decodable {
     let genres: [Genres]
 }
 
+// model to fetch JSON object genre
 struct Genres: Decodable {
     let id: Int
     let name: String

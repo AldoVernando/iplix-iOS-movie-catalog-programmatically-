@@ -24,6 +24,7 @@ class MovieInformationViewController: UIViewController {
             setData(movie: mov)
         }
     }
+    
 }
 
 

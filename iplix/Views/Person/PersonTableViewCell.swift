@@ -13,6 +13,7 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     var network = ViewController.network
     var persons: [Person] = []
+    var delegate: PersonTableViewDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +47,11 @@ extension PersonTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = persons[indexPath.row]
+        delegate.goToPerson(id: person.id!)
+    }
+    
 }
 
 
@@ -62,4 +68,10 @@ extension PersonTableViewCell {
             }
         }
     }
+}
+
+
+// MARK: PersonTableViewDelegate
+protocol PersonTableViewDelegate {
+    func goToPerson(id: Int)
 }

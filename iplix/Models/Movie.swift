@@ -8,6 +8,13 @@
 
 import Foundation
 
+// model to fetch JSON object result
+struct Results: Decodable {
+    let page: Int
+    let results: [Movie]
+}
+
+// model to fetch JSON object movie
 struct Movie: Decodable {
     let popularity: Double?
     let vote_count: Int?

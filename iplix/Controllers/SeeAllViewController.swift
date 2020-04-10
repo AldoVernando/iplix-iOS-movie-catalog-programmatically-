@@ -35,6 +35,7 @@ class SeeAllViewController: UIViewController {
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
+    
 }
 
 

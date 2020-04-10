@@ -9,11 +9,6 @@
 import UIKit
 import SDWebImage
 
-protocol ViewCellDelegator {
-    func gotoDetail(movie: Movie)
-    func goToAll(type: String)
-}
-
 class PopularViewCell: UITableViewCell {
     
     @IBOutlet weak var categoryTitle: UILabel!
@@ -22,7 +17,7 @@ class PopularViewCell: UITableViewCell {
     
     var network = ViewController.network
     var movies: [Movie] = []
-    var delegate: ViewCellDelegator!
+    var delegate: PopularViewCellDelegate!
     var type: String = ""
     
     override func awakeFromNib() {
@@ -36,8 +31,8 @@ class PopularViewCell: UITableViewCell {
     @IBAction func seeAllBtnPressed(_ sender: UIButton) {
         delegate.goToAll(type: type)
     }
-    
 }
+
 
 //MARK: - UICollectionView
 extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -71,6 +66,7 @@ extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate 
         let getMovie = movies[indexPath.row]
         delegate.gotoDetail(movie: getMovie)
     }
+    
 }
 
 
@@ -87,4 +83,11 @@ extension PopularViewCell {
         }
         
     }
+}
+
+
+// MARK: PopularViewCellDelegate
+protocol PopularViewCellDelegate {
+    func gotoDetail(movie: Movie)
+    func goToAll(type: String)
 }

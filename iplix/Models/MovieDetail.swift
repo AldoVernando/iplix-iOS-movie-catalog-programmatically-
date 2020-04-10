@@ -8,6 +8,7 @@
 
 import Foundation
 
+// model to fetch JSON object movie detail
 struct MovieDetail: Decodable {
     let genres: [Genres]?
     let production_companies: [company]?
@@ -15,15 +16,18 @@ struct MovieDetail: Decodable {
     let spoken_languages: [language]?
 }
 
+// model to fetch JSON object company
 struct company: Decodable {
     let name: String?
     let origin_country: String?
 }
 
+// model to fetch JSON object country
 struct country: Decodable {
     let name: String?
 }
 
+// model to fetch JSON object language
 struct language: Decodable {
     let name: String?
 }
