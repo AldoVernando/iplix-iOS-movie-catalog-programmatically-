@@ -31,6 +31,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         poster.addBlurEffect()
         foregroundPoster.layer.masksToBounds = true
         foregroundPoster.layer.borderWidth = 1.5

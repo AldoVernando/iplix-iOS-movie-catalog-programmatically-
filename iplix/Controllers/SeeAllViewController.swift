@@ -23,6 +23,7 @@ class SeeAllViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         setTitle()
         loadMovies()
         collectionView.delegate = self
@@ -70,7 +71,7 @@ extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == self.movies.count - 5 && !isWaiting {
+        if indexPath.row == self.movies.count - 10 && !isWaiting {
           isWaiting = true
           loadMoreData()
         }
@@ -151,7 +152,7 @@ extension SeeAllViewController {
                 }
             }
             
-            sleep(2)
+//            sleep(2)
         }
     }
     

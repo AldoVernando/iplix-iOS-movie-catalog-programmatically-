@@ -21,6 +21,7 @@ class NetworkManager {
     let posterURL = "https://image.tmdb.org/t/p/w500"
     let genreURL = "https://api.themoviedb.org/3/genre/list?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     let moviePageURL = "https://www.themoviedb.org/movie/"
+    let personURL = "https://api.themoviedb.org/3/person/popular?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     
     var genres: [Genres] = []
     var parameters: [String: String] = [
@@ -112,5 +113,14 @@ extension NetworkManager {
         let URL = "\(movieURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
         
         return URL
+    }
+    
+    
+    // Fetch popular persons
+    func getPersons(completion: @escaping ([Person]) -> ()) {
+        AF.request(personURL, method: .get).responseDecodable(of: PersonResult.self) { response in
+                guard let persons = response.value?.results else { return }
+                completion(persons)
+            }
     }
 }

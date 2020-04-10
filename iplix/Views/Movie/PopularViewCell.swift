@@ -18,7 +18,7 @@ class PopularViewCell: UITableViewCell {
     
     @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet weak var seeAllBtn: UIButton!
-    @IBOutlet weak var viewCollection: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var network = ViewController.network
     var movies: [Movie] = []
@@ -28,9 +28,9 @@ class PopularViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        viewCollection.dataSource = self
-        viewCollection.delegate = self
-        viewCollection.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
     }
     
     @IBAction func seeAllBtnPressed(_ sender: UIButton) {
@@ -82,7 +82,7 @@ extension PopularViewCell {
         network.getMovies(typeMovie: typeMovie, page: 1) { response in
             self.movies = response
             DispatchQueue.main.async {
-                self.viewCollection.reloadData()
+                self.collectionView.reloadData()
             }
         }
         
