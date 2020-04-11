@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - PaginatedTableView (1.0.1)
+  - SDWebImage/Core (5.7.0)
+  - SDWebImage/MapKit (5.7.0):
+    - SDWebImage/Core
+
+DEPENDENCIES:
+  - Alamofire
+  - ChameleonFramework/Swift
+  - PaginatedTableView
+  - SDWebImage/MapKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ChameleonFramework
+    - PaginatedTableView
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
+
+PODFILE CHECKSUM: 8e443f8753715af8de40e11c1e0543e6716d74ed
+
+COCOAPODS: 1.9.1

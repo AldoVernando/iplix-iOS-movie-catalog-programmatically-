@@ -83,7 +83,14 @@ extension NetworkManager {
         var finalURL: String = ""
         
         if query != "" {
-            finalURL = "https://api.themoviedb.org/3/search/movie?\(String(describing: parameters["apiKey"]!))&\(String(describing: parameters["language"]!))&query=\(query)&page=\(page)"
+            
+            var formatedQuery = query
+            
+            if query.contains(" ") {
+                formatedQuery = query.replacingOccurrences(of: " ", with: "%20")
+            }
+            
+            finalURL = "https://api.themoviedb.org/3/search/movie?\(String(describing: parameters["apiKey"]!))&\(String(describing: parameters["language"]!))&query=\(formatedQuery)&page=\(page)"
         } else {
             finalURL = createMovieURL(type: "upcoming", page: page)
         }
