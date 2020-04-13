@@ -10,7 +10,7 @@ import Foundation
 
 // model to fetch JSON object movie detail
 struct MovieDetail: Decodable {
-    let genres: [Genres]?
+    let genres: [Genre]?
     let production_companies: [company]?
     let production_countries: [country]?
     let spoken_languages: [language]?

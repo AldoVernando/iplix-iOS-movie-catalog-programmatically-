@@ -19,7 +19,7 @@ class NetworkManager {
     let moviePageURL = "https://www.themoviedb.org/movie/"
     let personURL = "https://api.themoviedb.org/3/person"
     
-    var genres: [Genres] = []
+    var genres: [Genre] = []
     var parameters: [String: String] = [
         "apiKey": "api_key=011476f22113ee2ae9d19f4d511997bc",
         "language": "language=en-US"
@@ -103,7 +103,7 @@ extension NetworkManager {
     
     
     // Fetch Genre List
-    func getGenres(completion: @escaping ([Genres]) -> ()) {
+    func getGenres(completion: @escaping ([Genre]) -> ()) {
         AF.request(genreURL, method: .get).responseDecodable(of: ResultGenres.self) { response in
                 guard let genres = response.value?.genres else { return }
                 completion(genres)

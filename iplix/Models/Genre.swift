@@ -10,11 +10,11 @@ import Foundation
 
 // model to fetch JSON object result
 struct ResultGenres: Decodable {
-    let genres: [Genres]
+    let genres: [Genre]
 }
 
 // model to fetch JSON object genre
-struct Genres: Decodable {
+struct Genre: Decodable {
     let id: Int
     let name: String
 }
