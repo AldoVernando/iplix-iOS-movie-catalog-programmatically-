@@ -11,7 +11,6 @@ import SDWebImage
 
 class ViewController: UIViewController, NetworkDelegate {
     
-    @IBOutlet weak var accountBtn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     var movieToSend: Movie?
@@ -31,16 +30,7 @@ class ViewController: UIViewController, NetworkDelegate {
         tableView.register(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "personCell")
         
     }
- 
-    @IBAction func accountBtnPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier:"goToAccount", sender: self)
-    }
-    
-    func reloadTableView() {
-        item = 4
-        tableView.reloadData()
-    }
-       
+
 }
 
 
@@ -91,13 +81,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 1 {
             return 180
         }
-        return 280
+        return 300
     }
 }
 
 
 // MARK: Functions
 extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
+    
+    
+    // reload table view
+    func reloadTableView() {
+        item = 4
+        tableView.reloadData()
+    }
     
     
     // prepare before perform segue
@@ -120,6 +117,11 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
                 vc.personId = personId
             }
         }
+    }
+    
+    // perform segue to account
+    func goToAccount() {
+        performSegue(withIdentifier:"goToAccount", sender: self)
     }
     
     

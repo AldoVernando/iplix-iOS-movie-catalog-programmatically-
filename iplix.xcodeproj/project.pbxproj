@@ -39,6 +39,12 @@
 		24C8260224403378004944E8 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8260024403378004944E8 /* PersonTableViewCell.swift */; };
 		24C8260324403378004944E8 /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C8260124403378004944E8 /* PersonTableViewCell.xib */; };
 		24C8260524403566004944E8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8260424403566004944E8 /* Person.swift */; };
+		24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DCDCD12444352B00C45497 /* GoogleService-Info.plist */; };
+		24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD324444D8E00C45497 /* AccountViewController.swift */; };
+		24DCDCD6244452C100C45497 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD5244452C100C45497 /* ProfileViewController.swift */; };
+		24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */; };
+		24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDB24445FF200C45497 /* LoginViewController.swift */; };
+		24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDD2444600400C45497 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +82,12 @@
 		24C8260024403378004944E8 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		24C8260124403378004944E8 /* PersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonTableViewCell.xib; sourceTree = "<group>"; };
 		24C8260424403566004944E8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		24DCDCD12444352B00C45497 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		24DCDCD324444D8E00C45497 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		24DCDCD5244452C100C45497 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthViewController.swift; sourceTree = "<group>"; };
+		24DCDCDB24445FF200C45497 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		24DCDCDD2444600400C45497 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		59B408CB68927379C3E9DE9F /* Pods_iplix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iplix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DD48CBF05F9418B9F5FB57 /* Pods-iplix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iplix.debug.xcconfig"; path = "Target Support Files/Pods-iplix/Pods-iplix.debug.xcconfig"; sourceTree = "<group>"; };
 		E59D7F60F5A2C6E7182D89FE /* Pods-iplix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iplix.release.xcconfig"; path = "Target Support Files/Pods-iplix/Pods-iplix.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +135,7 @@
 				2431A4E5243C34AC00E7A62C /* Assets.xcassets */,
 				2431A4E7243C34AC00E7A62C /* LaunchScreen.storyboard */,
 				2431A4EA243C34AC00E7A62C /* Info.plist */,
+				24DCDCD12444352B00C45497 /* GoogleService-Info.plist */,
 			);
 			path = iplix;
 			sourceTree = "<group>";
@@ -138,11 +151,12 @@
 		2431A4F1243C363C00E7A62C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24DCDCD92444534400C45497 /* Account */,
 				24432A5A243DD75B00421E35 /* Movie Detail */,
+				24DCDCDA2444536700C45497 /* Person Detail */,
 				2431A4E0243C34A900E7A62C /* ViewController.swift */,
 				24432A53243DAB3D00421E35 /* SearchViewController.swift */,
 				240229C9243EE45500DBF3A9 /* SeeAllViewController.swift */,
-				24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -212,6 +226,26 @@
 				24C825FC2440304D004944E8 /* PersonCollectionViewCell.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		24DCDCD92444534400C45497 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				24DCDCD324444D8E00C45497 /* AccountViewController.swift */,
+				24DCDCD5244452C100C45497 /* ProfileViewController.swift */,
+				24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */,
+				24DCDCDB24445FF200C45497 /* LoginViewController.swift */,
+				24DCDCDD2444600400C45497 /* RegisterViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		24DCDCDA2444536700C45497 /* Person Detail */ = {
+			isa = PBXGroup;
+			children = (
+				24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */,
+			);
+			path = "Person Detail";
 			sourceTree = "<group>";
 		};
 		A61D80B7475E700EFFB41C41 /* Pods */ = {
@@ -299,6 +333,7 @@
 				24C825FF2440304D004944E8 /* PersonCollectionViewCell.xib in Resources */,
 				240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */,
 				2431A50C243C447700E7A62C /* PopularViewCell.xib in Resources */,
+				24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */,
 				2431A4E4243C34A900E7A62C /* Main.storyboard in Resources */,
 				24432A58243DB7D400421E35 /* SearchTableViewCell.xib in Resources */,
 			);
@@ -353,12 +388,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */,
 				2431A4F5243C36AB00E7A62C /* NetworkManager.swift in Sources */,
 				2431A4E1243C34A900E7A62C /* ViewController.swift in Sources */,
 				2431A514243C861D00E7A62C /* MovieAboutViewController.swift in Sources */,
 				2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */,
 				24C8260524403566004944E8 /* Person.swift in Sources */,
 				245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */,
+				24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */,
+				24DCDCD6244452C100C45497 /* ProfileViewController.swift in Sources */,
 				240229CC243F164600DBF3A9 /* MovieReviewViewController.swift in Sources */,
 				2431A4FE243C41C800E7A62C /* MovieDetailViewController.swift in Sources */,
 				2431A4FA243C3E0100E7A62C /* Genre.swift in Sources */,
@@ -369,11 +407,13 @@
 				245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */,
 				24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
+				24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */,
 				2431A50F243C44C000E7A62C /* MovieCollectionViewCell.swift in Sources */,
 				2431A4F8243C3DF100E7A62C /* Movie.swift in Sources */,
 				2431A50B243C447700E7A62C /* PopularViewCell.swift in Sources */,
 				240229CA243EE45500DBF3A9 /* SeeAllViewController.swift in Sources */,
 				240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */,
+				24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */,
 				24C825FE2440304D004944E8 /* PersonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

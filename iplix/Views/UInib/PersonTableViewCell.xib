@@ -9,24 +9,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonTableViewCell" customModule="iplix" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="KGk-i7-Jjw" customClass="PersonTableViewCell" customModule="iplix" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="380" height="189"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="217" id="KGk-i7-Jjw" customClass="PersonTableViewCell" customModule="iplix" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="217"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="380" height="189"/>
+                <rect key="frame" x="0.0" y="0.0" width="383" height="217"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peoples" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-zO-Ga6">
-                        <rect key="frame" x="16" y="10" width="348" height="24"/>
+                        <rect key="frame" x="16" y="10" width="351" height="24"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2sB-Bu-Hzu">
-                        <rect key="frame" x="16" y="44" width="348" height="135"/>
+                        <rect key="frame" x="16" y="44" width="351" height="163"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0bB-un-Zp5">
-                            <size key="itemSize" width="128" height="128"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0bB-un-Zp5">
+                            <size key="itemSize" width="100" height="120"/>
+                            <size key="estimatedItemSize" width="100" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -39,10 +40,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="2sB-Bu-Hzu" firstAttribute="top" secondItem="5Op-zO-Ga6" secondAttribute="bottom" constant="10" id="3ZI-pZ-ByD"/>
-                    <constraint firstAttribute="trailing" secondItem="2sB-Bu-Hzu" secondAttribute="trailing" constant="16" id="CyS-aP-XZU"/>
-                    <constraint firstAttribute="bottom" secondItem="2sB-Bu-Hzu" secondAttribute="bottom" constant="10" id="OsV-Q2-Zbw"/>
+                    <constraint firstAttribute="bottom" secondItem="2sB-Bu-Hzu" secondAttribute="bottom" constant="10" id="ASY-f2-9f7"/>
                     <constraint firstItem="2sB-Bu-Hzu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="f6R-xB-Ldn"/>
                     <constraint firstItem="5Op-zO-Ga6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hIK-Yz-g81"/>
+                    <constraint firstAttribute="trailing" secondItem="2sB-Bu-Hzu" secondAttribute="trailing" constant="16" id="nes-qz-Rwv"/>
                     <constraint firstAttribute="trailing" secondItem="5Op-zO-Ga6" secondAttribute="trailing" constant="16" id="x51-ty-8Po"/>
                     <constraint firstItem="5Op-zO-Ga6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="y6X-6b-EHp"/>
                 </constraints>
@@ -51,7 +52,7 @@
             <connections>
                 <outlet property="collectionView" destination="2sB-Bu-Hzu" id="ru4-Ev-S0n"/>
             </connections>
-            <point key="canvasLocation" x="179.71014492753625" y="164.39732142857142"/>
+            <point key="canvasLocation" x="181.8840579710145" y="173.77232142857142"/>
         </tableViewCell>
     </objects>
 </document>

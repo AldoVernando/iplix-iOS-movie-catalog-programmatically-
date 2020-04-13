@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>938766252199-g838o8fai63a863sj4840dvcj4tced39.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.938766252199-g838o8fai63a863sj4840dvcj4tced39</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA1SDNWHfba7QqIjXU733xQ5gy7SMf3AJo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>938766252199</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.aldovernando.iplix</string>
+	<key>PROJECT_ID</key>
+	<string>iplix-22f10</string>
+	<key>STORAGE_BUCKET</key>
+	<string>iplix-22f10.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:938766252199:ios:f63bb17a7756b6e57e4382</string>
+	<key>DATABASE_URL</key>
+	<string>https://iplix-22f10.firebaseio.com</string>
+</dict>
+</plist>
