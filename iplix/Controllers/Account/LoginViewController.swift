@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CryptoSwift
+import RxSwift
 
 class LoginViewController: UIViewController {
 
@@ -14,18 +16,44 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     
+    let firebase = FirebaseManager()
+    let bag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUp()
+        
     }
 
     @IBAction func loginBtn(_ sender: UIButton) {
-        let pass = passwordText.text
+        let email = emailText.text
+        let pass = passwordText.text?.sha256()
+     
+        firebase.checkLogin(email: email!, password: pass!)
         
-        print(pass as Any)
+        
+        
     }
     
+}
+
+
+// MARK: UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+        return true
+    }
 }
 
 
@@ -36,7 +64,46 @@ extension LoginViewController {
     // set up object in view controller
     func setUp() {
         loginBtn.layer.cornerRadius = 10
+        setDelegate()
+        subscribeToFirebaseUser()
         hideKeyboardWhenTappedAround()
+    }
+    
+    
+    // set delegate to all text field
+    func setDelegate() {
+        emailText.delegate = self
+        passwordText.delegate = self
+    }
+    
+    
+    // subscribe to check login firebase user
+    func subscribeToFirebaseUser() {
+        firebase.publishUserId.subscribe(
+            onNext: { response in
+                self.validateLogin(user: response)
+            }
+        ).disposed(by: bag)
+    }
+    
+    
+    // validate login
+    func validateLogin(user: String) {
+        if user == "invalid" {
+            showAlert(message: "Invalid email or password")
+        } else {
+            print("success")
+        }
+    }
+    
+    
+    // show alert
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Information", message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+
+        self.present(alertController, animated: true, completion: nil)
     }
     
     

@@ -15,11 +15,8 @@ class AccountAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let vc = showViewController(controller: "LoginViewController") as! LoginViewController
         
-        self.addChild(vc)
-        self.contentView.addSubview(vc.view)
+       showLogin()
     }
 
     @IBAction func indexSegmentChange(_ sender: UISegmentedControl) {
@@ -53,12 +50,23 @@ extension AccountAuthViewController {
     
     
      // show selected view controller
-        func showViewController(controller: String) -> UIViewController {
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(identifier: controller)
-            
-            return viewController
-        }
+    func showViewController(controller: String) -> UIViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: controller)
+        
+        return viewController
+    }
+    
+    
+    // login view
+    func showLogin() {
+        
+        segmentedControl.selectedSegmentIndex = 0
+        let vc = showViewController(controller: "LoginViewController") as! LoginViewController
+
+        self.addChild(vc)
+        self.contentView.addSubview(vc.view)
+    }
     
 }

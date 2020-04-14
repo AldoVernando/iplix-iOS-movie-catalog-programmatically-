@@ -12,6 +12,8 @@
 		240229CE243F16F400DBF3A9 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CD243F16F400DBF3A9 /* Review.swift */; };
 		240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */; };
 		240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */; };
+		2411612924459A8900854B89 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612824459A8800854B89 /* FirebaseManager.swift */; };
+		2411612B24459E7E00854B89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612A24459E7E00854B89 /* User.swift */; };
 		2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4DC243C34A900E7A62C /* AppDelegate.swift */; };
 		2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4DE243C34A900E7A62C /* SceneDelegate.swift */; };
 		2431A4E1243C34A900E7A62C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4E0243C34A900E7A62C /* ViewController.swift */; };
@@ -53,6 +55,8 @@
 		240229CD243F16F400DBF3A9 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		2411612824459A8800854B89 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		2411612A24459E7E00854B89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2431A4D9243C34A900E7A62C /* iplix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iplix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2431A4DC243C34A900E7A62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2431A4DE243C34A900E7A62C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				2431A4F4243C36AA00E7A62C /* NetworkManager.swift */,
+				2411612824459A8800854B89 /* FirebaseManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */,
 				240229CD243F16F400DBF3A9 /* Review.swift */,
 				24C8260424403566004944E8 /* Person.swift */,
+				2411612A24459E7E00854B89 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				24C8260524403566004944E8 /* Person.swift in Sources */,
 				245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */,
 				24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */,
+				2411612B24459E7E00854B89 /* User.swift in Sources */,
 				24DCDCD6244452C100C45497 /* ProfileViewController.swift in Sources */,
 				240229CC243F164600DBF3A9 /* MovieReviewViewController.swift in Sources */,
 				2431A4FE243C41C800E7A62C /* MovieDetailViewController.swift in Sources */,
@@ -404,6 +411,7 @@
 				24432A57243DB7D400421E35 /* SearchTableViewCell.swift in Sources */,
 				240229CE243F16F400DBF3A9 /* Review.swift in Sources */,
 				24C8260224403378004944E8 /* PersonTableViewCell.swift in Sources */,
+				2411612924459A8900854B89 /* FirebaseManager.swift in Sources */,
 				245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */,
 				24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
@@ -562,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LR4V7R375P;
 				INFOPLIST_FILE = iplix/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,7 +590,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LR4V7R375P;
 				INFOPLIST_FILE = iplix/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
