@@ -33,6 +33,8 @@
 		24432A54243DAB3D00421E35 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24432A53243DAB3D00421E35 /* SearchViewController.swift */; };
 		24432A57243DB7D400421E35 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24432A55243DB7D400421E35 /* SearchTableViewCell.swift */; };
 		24432A58243DB7D400421E35 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24432A56243DB7D400421E35 /* SearchTableViewCell.xib */; };
+		245888A12446F98600F7511F /* FavoriteMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245888A02446F98600F7511F /* FavoriteMovie.swift */; };
+		245888A32446FE5900F7511F /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245888A22446FE5900F7511F /* RealmManager.swift */; };
 		245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FD3A4243D883300C6A0D6 /* MovieInformationViewController.swift */; };
 		245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */; };
 		24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */; };
@@ -78,6 +80,8 @@
 		24432A53243DAB3D00421E35 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		24432A55243DB7D400421E35 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		24432A56243DB7D400421E35 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		245888A02446F98600F7511F /* FavoriteMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovie.swift; sourceTree = "<group>"; };
+		245888A22446FE5900F7511F /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		245FD3A4243D883300C6A0D6 /* MovieInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformationViewController.swift; sourceTree = "<group>"; };
 		245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			children = (
 				2431A4F4243C36AA00E7A62C /* NetworkManager.swift */,
 				2411612824459A8800854B89 /* FirebaseManager.swift */,
+				245888A22446FE5900F7511F /* RealmManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				240229CD243F16F400DBF3A9 /* Review.swift */,
 				24C8260424403566004944E8 /* Person.swift */,
 				2411612A24459E7E00854B89 /* User.swift */,
+				245888A02446F98600F7511F /* FavoriteMovie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 			files = (
 				24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */,
 				2431A4F5243C36AB00E7A62C /* NetworkManager.swift in Sources */,
+				245888A12446F98600F7511F /* FavoriteMovie.swift in Sources */,
 				2431A4E1243C34A900E7A62C /* ViewController.swift in Sources */,
 				2431A514243C861D00E7A62C /* MovieAboutViewController.swift in Sources */,
 				2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */,
@@ -418,6 +425,7 @@
 				24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */,
 				2431A50F243C44C000E7A62C /* MovieCollectionViewCell.swift in Sources */,
 				2431A4F8243C3DF100E7A62C /* Movie.swift in Sources */,
+				245888A32446FE5900F7511F /* RealmManager.swift in Sources */,
 				2431A50B243C447700E7A62C /* PopularViewCell.swift in Sources */,
 				240229CA243EE45500DBF3A9 /* SeeAllViewController.swift in Sources */,
 				240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */,

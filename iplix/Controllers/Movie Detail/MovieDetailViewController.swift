@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import RealmSwift
 
 class MovieDetailViewController: UIViewController {
     
@@ -23,40 +24,34 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var aboutBarBtn: UIBarButtonItem!
     @IBOutlet weak var infoBarBtn: UIBarButtonItem!
     @IBOutlet weak var reviewBarBtn: UIBarButtonItem!
-    
+    @IBOutlet weak var favBtn: UIBarButtonItem!
     
     let network = ViewController.network
     var movie: Movie?
+    let realm = RealmManager()
+    var isFavorite = false
+    var tempFav: FavoriteMovie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        poster.addBlurEffect()
-        foregroundPoster.layer.masksToBounds = true
-        foregroundPoster.layer.borderWidth = 1.5
-        foregroundPoster.layer.borderColor = UIColor.white.cgColor
-        
-        if let mov = movie {
-            if let backdrop = mov.backdrop_path {
-                poster.sd_setImage(with: URL(string: network.posterURL + backdrop))
-            }
-            if let poster = mov.poster_path {
-                foregroundPoster.sd_setImage(with: URL(string: network.posterURL + poster))
-            }
-            movieTitle.text = mov.title
-            releasedDate.text = mov.release_date
-            rating.text = String(mov.vote_average!)
-        }
-        
-        aboutBarBtn(aboutBarBtn)
-        
+        checkFavorite()
+        setUp()
     }
+    
     
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
+    
+    @IBAction func favBtn(_ sender: UIBarButtonItem) {
+        
+        changeFav()
+        
+    }
+    
+
     @IBAction func aboutBarBtn(_ sender: UIBarButtonItem) {
         
         changeColor(sender: sender)
@@ -65,6 +60,7 @@ class MovieDetailViewController: UIViewController {
         contentView.addSubview(vc.view)
         
     }
+    
     
     @IBAction func infoBarBtn(_ sender: UIBarButtonItem) {
         
@@ -81,6 +77,7 @@ class MovieDetailViewController: UIViewController {
         }
         
     }
+    
     
     @IBAction func reviewBarBtn(_ sender: UIBarButtonItem) {
         
@@ -147,6 +144,31 @@ extension UIView {
 extension MovieDetailViewController {
     
     
+    // set up view
+    func setUp() {
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        poster.addBlurEffect()
+        foregroundPoster.layer.masksToBounds = true
+        foregroundPoster.layer.borderWidth = 1.5
+        foregroundPoster.layer.borderColor = UIColor.white.cgColor
+        
+        if let mov = movie {
+            if let backdrop = mov.backdrop_path {
+                poster.sd_setImage(with: URL(string: network.posterURL + backdrop))
+            }
+            if let poster = mov.poster_path {
+                foregroundPoster.sd_setImage(with: URL(string: network.posterURL + poster))
+            }
+            movieTitle.text = mov.title
+            releasedDate.text = mov.release_date
+            rating.text = String(mov.vote_average!)
+        }
+        
+        aboutBarBtn(aboutBarBtn)
+    }
+    
+    
     // change selected bar color
     func changeColor(sender: UIBarButtonItem) {
         
@@ -164,6 +186,68 @@ extension MovieDetailViewController {
         let viewController = storyboard.instantiateViewController(identifier: controller)
         
         return viewController
+    }
+    
+    
+    // change favorite icon
+    func changeFav() {
+        var image = "bookmark"
+        
+        // add to fav
+        if isFavorite == false {
+            image = "bookmark.fill"
+            
+            if let mov = movie {
+                
+                let favMovie = FavoriteMovie()
+                favMovie.id = mov.id!
+                favMovie.title = mov.title!
+                favMovie.poster_path = mov.poster_path!
+                
+                if let genreId = mov.genre_ids?.first {
+                    let genre = network.genres.filter({ $0.id == genreId })
+                    favMovie.genre = genre[0].name
+                } else {
+                    favMovie.genre = " "
+                }
+                
+                realm.saveFavMovie(fav: favMovie)
+            }
+            
+        }
+        // remove from fav
+        else {
+            if let data = tempFav {
+                realm.deleteFavMovie(fav: data)
+            }
+        }
+        
+        favBtn.image = UIImage(systemName: image)
+        
+        isFavorite = !isFavorite
+    }
+    
+    
+    // check Favorite
+    func checkFavorite() {
+        let favs = realm.realmInit.objects(FavoriteMovie.self)
+        
+        if favs.count > 0 {
+            if let mov = movie {
+                
+                for fav in favs {
+                    if fav.id == mov.id {
+                        isFavorite = true
+                        tempFav = fav
+                    }
+                }
+            }
+        }
+        
+        if isFavorite {
+            favBtn.image = UIImage(systemName: "bookmark.fill")
+        }
+        
     }
     
 }

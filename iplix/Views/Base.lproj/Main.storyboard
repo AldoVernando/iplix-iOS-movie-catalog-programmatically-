@@ -536,12 +536,19 @@
                                 <action selector="backBtn:" destination="gdS-vM-BYF" id="4Rw-Xx-C9q"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="bookmark" catalog="system" id="KAv-V9-ezf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="favBtn:" destination="gdS-vM-BYF" id="eUN-Hf-NNq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="aboutBarBtn" destination="eV2-o9-8os" id="osZ-SK-QOi"/>
                         <outlet property="backBtn" destination="tjT-cd-Xkm" id="miO-ZT-Gtb"/>
                         <outlet property="contentView" destination="IAV-4h-9Tc" id="DO5-PN-Tik"/>
+                        <outlet property="favBtn" destination="KAv-V9-ezf" id="adb-PY-ttR"/>
                         <outlet property="foregroundPoster" destination="hUi-QY-qs2" id="cfC-fE-Pud"/>
                         <outlet property="infoBarBtn" destination="FJb-ar-C7e" id="8Dx-y8-Vqk"/>
                         <outlet property="movieReleasedDate" destination="MdQ-N7-S6H" id="0ig-rr-TVT"/>
@@ -1016,6 +1023,7 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="background-image" width="275" height="183"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>

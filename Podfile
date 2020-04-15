@@ -13,5 +13,6 @@ target 'iplix' do
   pod 'Firebase/Auth'
   pod 'CryptoSwift'
   pod 'RxSwift'
+  pod 'RealmSwift'
 
 end

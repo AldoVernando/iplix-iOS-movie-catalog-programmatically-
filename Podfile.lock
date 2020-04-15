@@ -61,6 +61,11 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PaginatedTableView (1.0.1)
+  - Realm (4.4.0):
+    - Realm/Headers (= 4.4.0)
+  - Realm/Headers (4.4.0)
+  - RealmSwift (4.4.0):
+    - Realm (= 4.4.0)
   - RxSwift (5.1.1)
   - SDWebImage/Core (5.7.0)
   - SDWebImage/MapKit (5.7.0):
@@ -73,6 +78,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - PaginatedTableView
+  - RealmSwift
   - RxSwift
   - SDWebImage/MapKit
 
@@ -95,6 +101,8 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PaginatedTableView
+    - Realm
+    - RealmSwift
     - RxSwift
     - SDWebImage
 
@@ -116,9 +124,11 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  Realm: e125f464884cda953ebefe70c671b75b03b81b9b
+  RealmSwift: 33656a42bd300959a081fc13347376bc478071af
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
 
-PODFILE CHECKSUM: b8111be61086fd62ff6ff68a25a78870a4c5eb9b
+PODFILE CHECKSUM: 7d095a8506106a1bde99eae043b677f1e48cf0c1
 
 COCOAPODS: 1.9.1
