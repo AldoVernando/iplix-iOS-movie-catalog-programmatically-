@@ -12,8 +12,6 @@ class AccountViewController: UIViewController {
 
     @IBOutlet weak var accountView: UIView!
     
-    var isLogin = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,10 +37,21 @@ extension AccountViewController {
         var vc: UIViewController = showViewController(controller: "ProfileViewController") as! ProfileViewController
         navigationItem.title = "Profile"
         
-        if isLogin == false {
+        if UserDefaults.standard.string(forKey: "userId") == nil {
             vc = showViewController(controller: "AccountAuthViewController") as! AccountAuthViewController
             navigationItem.title = "Account"
         }
+        
+        self.addChild(vc)
+        self.accountView.addSubview(vc.view)
+    }
+    
+    
+    // show profile view
+    func showProfile() {
+        
+        let vc = showViewController(controller: "ProfileViewController") as! ProfileViewController
+        navigationItem.title = "Profile"
         
         self.addChild(vc)
         self.accountView.addSubview(vc.view)

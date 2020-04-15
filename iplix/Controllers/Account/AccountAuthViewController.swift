@@ -59,7 +59,7 @@ extension AccountAuthViewController {
     }
     
     
-    // login view
+    // show login view
     func showLogin() {
         
         segmentedControl.selectedSegmentIndex = 0
@@ -67,6 +67,15 @@ extension AccountAuthViewController {
 
         self.addChild(vc)
         self.contentView.addSubview(vc.view)
+    }
+    
+    
+    // show profile view
+    func showProfile() {
+        
+        let accountView = parent as! AccountViewController
+        accountView.showProfile()
+        
     }
     
 }

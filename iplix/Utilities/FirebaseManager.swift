@@ -16,6 +16,7 @@ class FirebaseManager {
     let dispatchQueue = DispatchQueue(label: "FIREBASE_REQUEST")
     let dispatchGroup  = DispatchGroup()
     var publishUserId = PublishSubject<String>()
+    var publishUser = PublishSubject<User>()
 }
 
 
@@ -29,6 +30,25 @@ extension FirebaseManager {
         let userRef = ref.child("users").child(user.id!)
         
         userRef.updateChildValues(user.getData())
+    }
+    
+    
+    // get user
+    func getUser(userId: String) {
+        
+        let userRef = ref.child("users").child(userId)
+        
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            let username = value["username"] as! String
+            let email = value["email"] as! String
+            let dob = value["dob"] as! String
+                
+            let user = User(id: userId, username: username, dob: dob, email: email, password: "")
+            
+            self.publishUser.onNext(user)
+        })
     }
     
     

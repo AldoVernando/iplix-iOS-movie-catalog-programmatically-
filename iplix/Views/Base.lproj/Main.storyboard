@@ -217,20 +217,78 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aldo Vernando" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9W-T5-rmn">
-                                <rect key="frame" x="16" y="60" width="382" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="16" y="60" width="382" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae9-Wn-jth">
+                                <rect key="frame" x="16" y="140" width="382" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aldo.vernando@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROZ-AW-riv">
+                                <rect key="frame" x="16" y="172" width="382" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlC-26-Ja6">
+                                <rect key="frame" x="16" y="214" width="382" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24/02/1999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsP-UK-2nM">
+                                <rect key="frame" x="16" y="246" width="382" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7s-25-hlX">
+                                <rect key="frame" x="16" y="622" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginBtn:" destination="HCw-V9-caK" eventType="touchUpInside" id="acU-33-wko"/>
+                                    <action selector="logoutBtn:" destination="GLe-kt-iGG" eventType="touchUpInside" id="bI1-3r-cef"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZsP-UK-2nM" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="0c5-Mh-VS8"/>
+                            <constraint firstItem="ROZ-AW-riv" firstAttribute="top" secondItem="ae9-Wn-jth" secondAttribute="bottom" constant="10" id="0fQ-bw-AIb"/>
+                            <constraint firstItem="ae9-Wn-jth" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="5Zn-cP-Few"/>
+                            <constraint firstItem="ZsP-UK-2nM" firstAttribute="top" secondItem="GlC-26-Ja6" secondAttribute="bottom" constant="10" id="Hf6-mF-lXv"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="GlC-26-Ja6" secondAttribute="trailing" constant="16" id="IYm-Md-fYn"/>
                             <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="g9W-T5-rmn" secondAttribute="trailing" constant="16" id="JiE-yx-ttu"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="ROZ-AW-riv" secondAttribute="trailing" constant="16" id="L5i-fP-yTe"/>
                             <constraint firstItem="g9W-T5-rmn" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="PmY-1z-wAB"/>
+                            <constraint firstItem="ROZ-AW-riv" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="R5s-SL-wV5"/>
+                            <constraint firstItem="GlC-26-Ja6" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="b7x-mv-Yke"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="ae9-Wn-jth" secondAttribute="trailing" constant="16" id="bLb-m2-Uig"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="bottom" secondItem="z7s-25-hlX" secondAttribute="bottom" constant="200" id="gQc-8l-ipB"/>
+                            <constraint firstItem="ae9-Wn-jth" firstAttribute="top" secondItem="g9W-T5-rmn" secondAttribute="bottom" constant="50" id="ggN-qD-w26"/>
+                            <constraint firstItem="GlC-26-Ja6" firstAttribute="top" secondItem="ROZ-AW-riv" secondAttribute="bottom" constant="20" id="tta-DJ-dOK"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="ZsP-UK-2nM" secondAttribute="trailing" constant="16" id="uLi-ib-qjp"/>
+                            <constraint firstItem="6tQ-ox-Xrs" firstAttribute="trailing" secondItem="z7s-25-hlX" secondAttribute="trailing" constant="16" id="vbr-eh-gn1"/>
+                            <constraint firstItem="z7s-25-hlX" firstAttribute="leading" secondItem="6tQ-ox-Xrs" secondAttribute="leading" constant="16" id="xbv-C3-dBA"/>
                             <constraint firstItem="g9W-T5-rmn" firstAttribute="top" secondItem="6tQ-ox-Xrs" secondAttribute="top" constant="16" id="zyx-ts-vu0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6tQ-ox-Xrs"/>
                     </view>
+                    <connections>
+                        <outlet property="dob" destination="ZsP-UK-2nM" id="6kx-br-l0C"/>
+                        <outlet property="email" destination="ROZ-AW-riv" id="JpW-36-Wpb"/>
+                        <outlet property="registerBtn" destination="z7s-25-hlX" id="byv-qr-vA0"/>
+                        <outlet property="username" destination="g9W-T5-rmn" id="sIo-8t-xDZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="quk-13-ftf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

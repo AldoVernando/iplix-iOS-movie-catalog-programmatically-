@@ -32,8 +32,6 @@ class LoginViewController: UIViewController {
      
         firebase.checkLogin(email: email!, password: pass!)
         
-        
-        
     }
     
 }
@@ -81,18 +79,21 @@ extension LoginViewController {
     func subscribeToFirebaseUser() {
         firebase.publishUserId.subscribe(
             onNext: { response in
-                self.validateLogin(user: response)
+                self.validateLogin(userId: response)
             }
         ).disposed(by: bag)
     }
     
     
     // validate login
-    func validateLogin(user: String) {
-        if user == "invalid" {
+    func validateLogin(userId: String) {
+        if userId == "invalid" {
             showAlert(message: "Invalid email or password")
         } else {
-            print("success")
+            UserDefaults.standard.set(userId, forKey: "userId")
+            
+            let accountView = parent as! AccountAuthViewController
+            accountView.showProfile()
         }
     }
     

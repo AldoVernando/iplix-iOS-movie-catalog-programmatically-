@@ -75,6 +75,7 @@ extension RegisterViewController {
     
     // set up object in view controller
     func setUp() {
+        registerBtn.layer.cornerRadius = 10
         setDelegate()
         showDatePicker()
         hideKeyboardWhenTappedAround()
