@@ -14,6 +14,7 @@ struct Results: Decodable {
     let results: [Movie]
 }
 
+
 // model to fetch JSON object movie
 struct Movie: Decodable {
     let popularity: Double?

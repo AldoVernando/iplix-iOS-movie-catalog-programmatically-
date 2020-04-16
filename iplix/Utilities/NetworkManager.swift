@@ -25,7 +25,6 @@ class NetworkManager {
         "language": "language=en-US"
     ]
 
-    //Init
     init() {
         getGenres() { response in
             self.genres = response
@@ -41,7 +40,7 @@ class NetworkManager {
 extension NetworkManager {
     
     
-    // Fetch Movie List
+    // fetch movie list
     func getMovies(typeMovie: String, page: Int, completion: @escaping ([Movie]) -> ()) {
         
         let finalURL = createMovieURL(type: typeMovie, page: page)
@@ -53,7 +52,7 @@ extension NetworkManager {
     }
     
     
-    // Fetch Movie Detail
+    // fetch movie detail
     func getMovieDetail(movieId: String, completion: @escaping (MovieDetail) -> ()) {
         
         let finalURL = createMovieURL(type: movieId, page: 1)
@@ -65,7 +64,19 @@ extension NetworkManager {
     }
     
     
-    // Fetch Movie Detail Reviews
+    // fetch movie detail for favorite
+    func getMovieforFav(movieId: String, completion: @escaping (Movie) -> ()) {
+        
+        let finalURL = createMovieURL(type: movieId, page: 1)
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: Movie.self) { response in
+            guard let movie = response.value else { return }
+            completion(movie)
+        }
+    }
+    
+    
+    // fetch movie detail reviews
     func getMovieReview(movieId: String, completion: @escaping ([Review]) -> ()) {
         
         let finalURL = "\(movieURL)/\(movieId)/reviews?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=1"
@@ -77,7 +88,7 @@ extension NetworkManager {
     }
     
     
-    // Search Movie
+    // search movie
     func getMovieWithQuery(query: String, page: Int, completion: @escaping ([Movie]) -> ()) {
         
         var finalURL: String = ""
@@ -102,7 +113,7 @@ extension NetworkManager {
     }
     
     
-    // Fetch Genre List
+    // fetch genre list
     func getGenres(completion: @escaping ([Genre]) -> ()) {
         AF.request(genreURL, method: .get).responseDecodable(of: ResultGenres.self) { response in
                 guard let genres = response.value?.genres else { return }
@@ -111,7 +122,7 @@ extension NetworkManager {
     }
     
     
-    // Fetch popular persons
+    // fetch popular persons
     func getPersons(completion: @escaping ([Person]) -> ()) {
         
         let finalURL = createPersonURL(type: "popular")
@@ -123,7 +134,7 @@ extension NetworkManager {
     }
     
     
-    // Fetch Person Detail
+    // fetch person detail
     func getPersonDetail(id: Int, completion: @escaping (Person) -> ()) {
         
         let finalURL = createPersonURL(type: String(id))
@@ -135,7 +146,7 @@ extension NetworkManager {
     }
     
     
-    // Generate Movie URL
+    // generate movie URL
     func createMovieURL(type: String, page: Int) -> String{
         let URL = "\(movieURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
         
@@ -143,7 +154,7 @@ extension NetworkManager {
     }
     
     
-    // Generate Person URL
+    // generate person URL
     func createPersonURL(type: String) -> String{
         let URL = "\(personURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)"
         

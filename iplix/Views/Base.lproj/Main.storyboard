@@ -790,7 +790,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mX7-Hm-emk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+            <point key="canvasLocation" x="-61" y="96"/>
         </scene>
         <!--Iplix-->
         <scene sceneID="LbI-AE-yRV">
@@ -811,12 +811,54 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="VbT-MZ-b8g"/>
-                        <segue destination="cMS-TC-Fdn" kind="relationship" relationship="viewControllers" id="Prl-Ne-WuU"/>
+                        <segue destination="Gi1-JD-3DS" kind="relationship" relationship="viewControllers" id="wGa-U5-EQC"/>
+                        <segue destination="cMS-TC-Fdn" kind="relationship" relationship="viewControllers" id="MpS-eM-hy3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWm-r5-bRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="95.758928571428569"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="oJx-eJ-hxy">
+            <objects>
+                <viewController id="Gi1-JD-3DS" customClass="FavoriteViewController" customModule="iplix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xaw-EJ-sHU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bOZ-pG-MUr">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no favorite movie !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xXI-g4-27H">
+                                <rect key="frame" x="20" y="426" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bOZ-pG-MUr" firstAttribute="top" secondItem="NqJ-tX-SIQ" secondAttribute="top" id="6XJ-GH-chb"/>
+                            <constraint firstItem="NqJ-tX-SIQ" firstAttribute="trailing" secondItem="bOZ-pG-MUr" secondAttribute="trailing" id="Jkp-zh-F5G"/>
+                            <constraint firstItem="NqJ-tX-SIQ" firstAttribute="bottom" secondItem="bOZ-pG-MUr" secondAttribute="bottom" id="Leb-OG-cqR"/>
+                            <constraint firstItem="bOZ-pG-MUr" firstAttribute="leading" secondItem="NqJ-tX-SIQ" secondAttribute="leading" id="huA-Yv-BiX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NqJ-tX-SIQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="bookmark.fill" catalog="system" id="jn9-K3-xAi"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="message" destination="xXI-g4-27H" id="4pP-XP-KzC"/>
+                        <outlet property="tableView" destination="bOZ-pG-MUr" id="bd8-0O-yYn"/>
+                        <segue destination="gdS-vM-BYF" kind="show" identifier="goToDetail" id="zLj-il-sr2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cr4-D6-Dgb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-62.318840579710148" y="870.53571428571422"/>
         </scene>
         <!--Search-->
         <scene sceneID="Wzw-Tn-5JV">
@@ -833,16 +875,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88g-hF-rmX" customClass="PaginatedTableView" customModule="PaginatedTableView">
                                 <rect key="frame" x="0.0" y="196" width="414" height="617"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="brp-VF-exK">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="brp-VF-exK" id="YqC-II-gac">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1018,12 +1050,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WD0-1H-dPf"/>
+        <segue reference="zLj-il-sr2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="background-image" width="275" height="183"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>

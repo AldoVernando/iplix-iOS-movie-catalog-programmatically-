@@ -22,13 +22,7 @@ class ViewController: UIViewController, NetworkDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ViewController.network.delegate = self
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        tableView.register(UINib(nibName: "PopularViewCell", bundle: nil), forCellReuseIdentifier: "popularCell")
-        tableView.register(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "personCell")
-        
+        setUp()
     }
 
 }
@@ -94,6 +88,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
     
     
+    // set up view controller
+    func setUp() {
+        
+        ViewController.network.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.register(UINib(nibName: "PopularViewCell", bundle: nil), forCellReuseIdentifier: "popularCell")
+        tableView.register(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "personCell")
+    }
+    
+    
     // reload table view
     func reloadTableView() {
         item = 4
@@ -122,6 +128,7 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
             }
         }
     }
+    
     
     // perform segue to account
     func goToAccount() {

@@ -24,16 +24,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
-        tableView.paginatedDelegate = self
-        tableView.paginatedDataSource = self
-        tableView.enablePullToRefresh = true
-        tableView.pullToRefreshTitle = NSAttributedString(string: "Pull to Refresh")
-        tableView.loadData(refresh: true)
-        
-        tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
-        
-        hideKeyboardWhenTappedAround()
+        setUp()
     }
     
 }
@@ -42,9 +33,11 @@ class SearchViewController: UIViewController {
 // MARK: PaginatedTableView
 extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDataSource {
  
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     
     func loadMore(_ pageNumber: Int, _ pageSize: Int, onSuccess: ((Bool) -> Void)?, onError: ((Error) -> Void)?) {
         
@@ -72,21 +65,20 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
         }
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
          return 100
      }
      
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else {
             fatalError("error")
-        }
-        
-        if movies.isEmpty {
-            
         }
         
         let movie = movies[indexPath.row]
@@ -105,6 +97,7 @@ extension SearchViewController: PaginatedTableViewDelegate, PaginatedTableViewDa
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         gotoDetail(movie: movies[indexPath.row])
@@ -129,6 +122,22 @@ extension SearchViewController: UISearchBarDelegate {
 
 // MARK: SearchViewController Functions
 extension SearchViewController {
+    
+    
+    // set up view controller
+    func setUp() {
+        
+        searchBar.delegate = self
+        tableView.paginatedDelegate = self
+        tableView.paginatedDataSource = self
+        tableView.enablePullToRefresh = true
+        tableView.pullToRefreshTitle = NSAttributedString(string: "Pull to Refresh")
+        tableView.loadData(refresh: true)
+        
+        tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+        
+        hideKeyboardWhenTappedAround()
+    }
     
     
     // prepare before perform segue

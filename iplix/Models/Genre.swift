@@ -13,6 +13,7 @@ struct ResultGenres: Decodable {
     let genres: [Genre]
 }
 
+
 // model to fetch JSON object genre
 struct Genre: Decodable {
     let id: Int

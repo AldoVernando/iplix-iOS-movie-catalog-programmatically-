@@ -13,6 +13,7 @@ struct PersonResult: Decodable {
     let results: [Person]?
 }
 
+
 // model to fetch JSON object person
 struct Person: Decodable {
     let id: Int?

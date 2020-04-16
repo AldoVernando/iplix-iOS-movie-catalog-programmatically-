@@ -31,16 +31,21 @@ class MovieDetailViewController: UIViewController {
     let realm = RealmManager()
     var isFavorite = false
     var tempFav: FavoriteMovie?
+    var parentView: FavoriteViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkFavorite()
         setUp()
     }
     
     
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
+        
+        if let parent = parentView {
+            parent.getFavorite()
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -144,9 +149,10 @@ extension UIView {
 extension MovieDetailViewController {
     
     
-    // set up view
+    // set up view controller
     func setUp() {
         
+        checkFavorite()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         poster.addBlurEffect()
         foregroundPoster.layer.masksToBounds = true

@@ -23,13 +23,7 @@ class SeeAllViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        setTitle()
-        loadMovies()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
+        setUp()
     }
     
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
@@ -100,6 +94,18 @@ extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSo
 // MARK: Functions
 extension SeeAllViewController {
     
+    
+    // set up view controller
+    func setUp() {
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        setTitle()
+        loadMovies()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
+    }
     
     // set navigation title
     func setTitle() {

@@ -56,10 +56,10 @@
                 <outlet property="poster" destination="Wtw-gq-FS5" id="S13-Ew-I1l"/>
                 <outlet property="title" destination="geJ-95-pJS" id="2ZK-w5-BNR"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="106.13839285714285"/>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="poster" width="420" height="600"/>
+        <image name="poster" width="301" height="443"/>
     </resources>
 </document>

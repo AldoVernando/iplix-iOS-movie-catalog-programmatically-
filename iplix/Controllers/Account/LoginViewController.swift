@@ -59,7 +59,7 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController {
     
     
-    // set up object in view controller
+    // set up view controller
     func setUp() {
         loginBtn.layer.cornerRadius = 10
         setDelegate()

@@ -56,8 +56,6 @@ extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
 
-        print(nextTag)
-
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
@@ -73,7 +71,7 @@ extension RegisterViewController: UITextFieldDelegate {
 extension RegisterViewController {
     
     
-    // set up object in view controller
+    // set up view controller
     func setUp() {
         registerBtn.layer.cornerRadius = 10
         setDelegate()

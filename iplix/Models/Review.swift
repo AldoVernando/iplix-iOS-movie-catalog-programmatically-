@@ -13,6 +13,7 @@ struct ReviewResult: Decodable {
     let results: [Review]?
 }
 
+
 // model to fetch JSON object review
 struct Review: Decodable {
     let author: String?

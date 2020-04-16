@@ -12,6 +12,7 @@
 		240229CE243F16F400DBF3A9 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CD243F16F400DBF3A9 /* Review.swift */; };
 		240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */; };
 		240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */; };
+		240BD08124481C13009806B2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BD08024481C13009806B2 /* FavoriteViewController.swift */; };
 		2411612924459A8900854B89 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612824459A8800854B89 /* FirebaseManager.swift */; };
 		2411612B24459E7E00854B89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612A24459E7E00854B89 /* User.swift */; };
 		2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4DC243C34A900E7A62C /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		240229CD243F16F400DBF3A9 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		240BD08024481C13009806B2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		2411612824459A8800854B89 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2411612A24459E7E00854B89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2431A4D9243C34A900E7A62C /* iplix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iplix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				2431A4E0243C34A900E7A62C /* ViewController.swift */,
 				24432A53243DAB3D00421E35 /* SearchViewController.swift */,
 				240229C9243EE45500DBF3A9 /* SeeAllViewController.swift */,
+				240BD08024481C13009806B2 /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */,
 				24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
+				240BD08124481C13009806B2 /* FavoriteViewController.swift in Sources */,
 				24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */,
 				2431A50F243C44C000E7A62C /* MovieCollectionViewCell.swift in Sources */,
 				2431A4F8243C3DF100E7A62C /* Movie.swift in Sources */,
