@@ -43,7 +43,7 @@ extension AccountViewController {
         }
         
         self.addChild(vc)
-        self.accountView.addSubview(vc.view)
+        self.changeContentView(view: vc.view)
     }
     
     
@@ -54,7 +54,7 @@ extension AccountViewController {
         navigationItem.title = "Profile"
         
         self.addChild(vc)
-        self.accountView.addSubview(vc.view)
+        self.changeContentView(view: vc.view)
     }
     
     
@@ -65,5 +65,15 @@ extension AccountViewController {
         let viewController = storyboard.instantiateViewController(identifier: controller)
         
         return viewController
+    }
+    
+    
+    // change content view
+    func changeContentView(view: UIView) {
+        
+        UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve,
+        animations: {
+            self.accountView.addSubview(view)
+        }, completion: nil)
     }
 }

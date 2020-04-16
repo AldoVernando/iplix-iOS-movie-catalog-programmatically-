@@ -62,7 +62,7 @@ class MovieDetailViewController: UIViewController {
         changeColor(sender: sender)
         let vc = showViewController(controller: "MovieAboutViewController") as! MovieAboutViewController
         vc.movie = movie
-        contentView.addSubview(vc.view)
+        changeContentView(view: vc.view)
         
     }
     
@@ -76,7 +76,7 @@ class MovieDetailViewController: UIViewController {
             network.getMovieDetail(movieId: String(mov.id!)) { response in
                 vc.movieDetail = response
                 DispatchQueue.main.async {
-                    self.contentView.addSubview(vc.view)
+                    self.changeContentView(view: vc.view)
                 }
             }
         }
@@ -95,7 +95,7 @@ class MovieDetailViewController: UIViewController {
                 vc.reviews = response
                 DispatchQueue.main.async {
                     self.addChild(vc)
-                    self.contentView.addSubview(vc.view)
+                    self.changeContentView(view: vc.view)
                 }
             }
         }
@@ -254,6 +254,16 @@ extension MovieDetailViewController {
             favBtn.image = UIImage(systemName: "bookmark.fill")
         }
         
+    }
+    
+    
+    // change content view
+    func changeContentView(view: UIView) {
+        
+        UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve,
+        animations: {
+            self.contentView.addSubview(view)
+        }, completion: nil)
     }
     
 }

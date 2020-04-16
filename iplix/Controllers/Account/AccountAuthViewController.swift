@@ -27,14 +27,14 @@ class AccountAuthViewController: UIViewController {
                 let vc = showViewController(controller: "LoginViewController") as! LoginViewController
                 
                 self.addChild(vc)
-                self.contentView.addSubview(vc.view)
+                self.changeContentView(view: vc.view)
                 break
             
             case 1:
                 let vc = showViewController(controller: "RegisterViewController") as! RegisterViewController
                 
                 self.addChild(vc)
-                self.contentView.addSubview(vc.view)
+                self.changeContentView(view: vc.view)
                 break
             
             default:
@@ -66,7 +66,7 @@ extension AccountAuthViewController {
         let vc = showViewController(controller: "LoginViewController") as! LoginViewController
 
         self.addChild(vc)
-        self.contentView.addSubview(vc.view)
+        self.changeContentView(view: vc.view)
     }
     
     
@@ -76,6 +76,16 @@ extension AccountAuthViewController {
         let accountView = parent as! AccountViewController
         accountView.showProfile()
         
+    }
+    
+    
+    // change content view
+    func changeContentView(view: UIView) {
+        
+        UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve,
+        animations: {
+            self.contentView.addSubview(view)
+        }, completion: nil)
     }
     
 }
