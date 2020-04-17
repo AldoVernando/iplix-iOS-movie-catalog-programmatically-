@@ -583,8 +583,15 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWz-HM-9Xh" customClass="WKYTPlayerView">
+                                                <rect key="frame" x="16" y="70" width="382" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="TnU-uH-SXG"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overview content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6Q-4t-CvR">
-                                                <rect key="frame" x="20" y="66" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="280" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -594,10 +601,13 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="x6Q-4t-CvR" secondAttribute="trailing" constant="20" id="JqM-js-5Qs"/>
                                             <constraint firstAttribute="trailing" secondItem="XtD-qI-TzT" secondAttribute="trailing" constant="20" id="Sms-ix-gjc"/>
+                                            <constraint firstItem="gWz-HM-9Xh" firstAttribute="leading" secondItem="bi3-Sj-l3y" secondAttribute="leading" constant="16" id="TUo-Nk-oaF"/>
+                                            <constraint firstItem="x6Q-4t-CvR" firstAttribute="top" secondItem="gWz-HM-9Xh" secondAttribute="bottom" constant="10" id="Xib-LB-yS0"/>
+                                            <constraint firstAttribute="trailing" secondItem="gWz-HM-9Xh" secondAttribute="trailing" constant="16" id="YwL-Gk-7xK"/>
                                             <constraint firstItem="XtD-qI-TzT" firstAttribute="top" secondItem="bi3-Sj-l3y" secondAttribute="top" constant="20" id="cEF-RW-Zc4"/>
                                             <constraint firstItem="XtD-qI-TzT" firstAttribute="leading" secondItem="bi3-Sj-l3y" secondAttribute="leading" constant="20" id="gPq-k0-qLe"/>
                                             <constraint firstItem="x6Q-4t-CvR" firstAttribute="leading" secondItem="bi3-Sj-l3y" secondAttribute="leading" constant="20" id="gqK-rz-Ghp"/>
-                                            <constraint firstItem="x6Q-4t-CvR" firstAttribute="top" secondItem="XtD-qI-TzT" secondAttribute="bottom" constant="16" id="tpP-8d-3XD"/>
+                                            <constraint firstItem="gWz-HM-9Xh" firstAttribute="top" secondItem="XtD-qI-TzT" secondAttribute="bottom" constant="20" id="l3t-jq-Kya"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -624,13 +634,15 @@
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="aboutLabel" destination="XtD-qI-TzT" id="77f-Qx-cp5"/>
                         <outlet property="overview" destination="x6Q-4t-CvR" id="d89-Zp-CKh"/>
                         <outlet property="scroller" destination="r9t-5a-lEQ" id="K9p-Wg-lZr"/>
+                        <outlet property="trailerView" destination="gWz-HM-9Xh" id="lr0-4x-Wa4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6G-nh-Tl9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="907"/>
+            <point key="canvasLocation" x="3047.826086956522" y="906.69642857142856"/>
         </scene>
         <!--Movie Information View Controller-->
         <scene sceneID="gy7-Ws-H7e">
@@ -1057,7 +1069,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zLj-il-sr2"/>
+        <segue reference="WD0-1H-dPf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

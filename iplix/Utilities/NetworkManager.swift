@@ -146,6 +146,18 @@ extension NetworkManager {
     }
     
     
+    // get movie's video
+    func getVideoURL(id: Int, completion: @escaping ([Video]) -> ()) {
+        
+        let finalURL = createVideoURL(id: id)
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: VideoResult.self) { response in
+            guard let videos = response.value?.results else { return }
+                completion(videos)
+            }
+    }
+    
+    
     // generate movie URL
     func createMovieURL(type: String, page: Int) -> String{
         let URL = "\(movieURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
@@ -160,6 +172,16 @@ extension NetworkManager {
         
         return URL
     }
+    
+    
+    // generate video URL
+    func createVideoURL(id: Int) -> String {
+        let URL = "https://api.themoviedb.org/3/movie/\(id)/videos?\(parameters["apiKey"]!)"
+        
+        return URL
+    }
+    
+   
 }
 
 

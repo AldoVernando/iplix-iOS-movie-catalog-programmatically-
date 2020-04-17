@@ -70,6 +70,7 @@ PODS:
   - SDWebImage/Core (5.7.0)
   - SDWebImage/MapKit (5.7.0):
     - SDWebImage/Core
+  - YoutubePlayer-in-WKWebView (0.3.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -81,6 +82,7 @@ DEPENDENCIES:
   - RealmSwift
   - RxSwift
   - SDWebImage/MapKit
+  - YoutubePlayer-in-WKWebView
 
 SPEC REPOS:
   trunk:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - RealmSwift
     - RxSwift
     - SDWebImage
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
@@ -128,7 +131,8 @@ SPEC CHECKSUMS:
   RealmSwift: 33656a42bd300959a081fc13347376bc478071af
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: a99471f452bdfa0ca52ddf5b1adf2b61cab1d1eb
+  YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: 7d095a8506106a1bde99eae043b677f1e48cf0c1
+PODFILE CHECKSUM: 5b892e062974d75e8fb58869f43885b1bb6f1b96
 
 COCOAPODS: 1.9.1

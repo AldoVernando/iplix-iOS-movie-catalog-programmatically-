@@ -50,6 +50,7 @@
 		24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */; };
 		24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDB24445FF200C45497 /* LoginViewController.swift */; };
 		24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDD2444600400C45497 /* RegisterViewController.swift */; };
+		24FEEF9B24496A0D002EEBC0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FEEF9A24496A0D002EEBC0 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthViewController.swift; sourceTree = "<group>"; };
 		24DCDCDB24445FF200C45497 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		24DCDCDD2444600400C45497 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		24FEEF9A24496A0D002EEBC0 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		59B408CB68927379C3E9DE9F /* Pods_iplix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iplix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DD48CBF05F9418B9F5FB57 /* Pods-iplix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iplix.debug.xcconfig"; path = "Target Support Files/Pods-iplix/Pods-iplix.debug.xcconfig"; sourceTree = "<group>"; };
 		E59D7F60F5A2C6E7182D89FE /* Pods-iplix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iplix.release.xcconfig"; path = "Target Support Files/Pods-iplix/Pods-iplix.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				2431A4F9243C3E0100E7A62C /* Genre.swift */,
 				245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */,
 				240229CD243F16F400DBF3A9 /* Review.swift */,
+				24FEEF9A24496A0D002EEBC0 /* Video.swift */,
 				24C8260424403566004944E8 /* Person.swift */,
 				2411612A24459E7E00854B89 /* User.swift */,
 				245888A02446F98600F7511F /* FavoriteMovie.swift */,
@@ -410,6 +413,7 @@
 				2431A514243C861D00E7A62C /* MovieAboutViewController.swift in Sources */,
 				2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */,
 				24C8260524403566004944E8 /* Person.swift in Sources */,
+				24FEEF9B24496A0D002EEBC0 /* Video.swift in Sources */,
 				245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */,
 				24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */,
 				2411612B24459E7E00854B89 /* User.swift in Sources */,
