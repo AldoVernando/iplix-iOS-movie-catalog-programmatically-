@@ -16,11 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="120" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="TqE-v2-BhE">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="TqE-v2-BhE">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="160" id="DPw-Zo-Idh"/>
-                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z69-19-r37">
                         <rect key="frame" x="5" y="170" width="110" height="18"/>
@@ -43,7 +40,8 @@
                 <constraint firstItem="Z69-19-r37" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="RWd-2m-ist"/>
                 <constraint firstAttribute="trailing" secondItem="tUg-qi-akE" secondAttribute="trailing" constant="5" id="TWq-19-bXY"/>
                 <constraint firstItem="TqE-v2-BhE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cU6-bm-qNn"/>
-                <constraint firstItem="Z69-19-r37" firstAttribute="top" secondItem="TqE-v2-BhE" secondAttribute="bottom" constant="10" id="mCy-cJ-KaD"/>
+                <constraint firstItem="Z69-19-r37" firstAttribute="top" secondItem="TqE-v2-BhE" secondAttribute="bottom" constant="10" id="cyW-Bq-KHy"/>
+                <constraint firstAttribute="bottom" secondItem="tUg-qi-akE" secondAttribute="bottom" constant="11" id="kjx-bD-FcE"/>
                 <constraint firstItem="TqE-v2-BhE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nne-iC-cCd"/>
                 <constraint firstAttribute="trailing" secondItem="Z69-19-r37" secondAttribute="trailing" constant="5" id="oNA-ti-HS5"/>
             </constraints>
@@ -53,7 +51,7 @@
                 <outlet property="poster" destination="TqE-v2-BhE" id="wIf-Ty-7w9"/>
                 <outlet property="title" destination="Z69-19-r37" id="fLB-gY-C8B"/>
             </connections>
-            <point key="canvasLocation" x="113" y="117"/>
+            <point key="canvasLocation" x="111.59420289855073" y="116.51785714285714"/>
         </collectionViewCell>
     </objects>
     <resources>

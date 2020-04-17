@@ -16,7 +16,6 @@ class PersonDetailViewController: UIViewController {
     @IBOutlet weak var biography: UILabel!
     
     var network = ViewController.network
-    
     var personId: Int?
     
     override func viewDidLoad() {
