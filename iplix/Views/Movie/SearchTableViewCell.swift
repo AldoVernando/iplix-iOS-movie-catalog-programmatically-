@@ -17,6 +17,7 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        poster.setCornerRadius(radius: 10)
     }
     
 }

@@ -14,6 +14,7 @@ struct VideoResult: Decodable {
 }
 
 
+// model to fetch JSON object video
 struct Video: Decodable {
     let id: String?
     let name: String?

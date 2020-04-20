@@ -16,7 +16,6 @@ class MovieAboutViewController: UIViewController {
     @IBOutlet weak var trailerView: WKYTPlayerView!
     @IBOutlet weak var aboutLabel: UILabel!
     
-    
     var movie: Movie?
     let network = ViewController.network
     
@@ -27,9 +26,6 @@ class MovieAboutViewController: UIViewController {
             overview.text = mov.overview
             showTrailer(id: mov.id!)
         }
-        
-        
-        
     }
     
     // set scrollview height

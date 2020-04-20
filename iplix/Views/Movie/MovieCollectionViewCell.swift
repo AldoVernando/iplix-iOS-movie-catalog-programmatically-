@@ -17,6 +17,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        poster.setCornerRadius(radius: 10)
     }
 
 }

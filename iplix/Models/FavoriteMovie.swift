@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+
+// model to use in realm database
 class FavoriteMovie: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""

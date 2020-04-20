@@ -17,7 +17,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var confirmationPassword: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
     
-    
     let datePicker = UIDatePicker()
     let firebase = FirebaseManager()
     

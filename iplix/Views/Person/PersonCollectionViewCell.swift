@@ -16,7 +16,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        profilePicture.layer.cornerRadius = profilePicture.frame.height / 2
+        profilePicture.setCornerRadius(radius: profilePicture.frame.height / 2)
     }
 
 }

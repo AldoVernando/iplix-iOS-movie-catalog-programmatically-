@@ -30,6 +30,7 @@
 		2431A50F243C44C000E7A62C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A50D243C44C000E7A62C /* MovieCollectionViewCell.swift */; };
 		2431A510243C44C000E7A62C /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2431A50E243C44C000E7A62C /* MovieCollectionViewCell.xib */; };
 		2431A514243C861D00E7A62C /* MovieAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A513243C861D00E7A62C /* MovieAboutViewController.swift */; };
+		2439FA70244D693600E5DDFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439FA6F244D693600E5DDFB /* Extensions.swift */; };
 		24432A48243D9DBC00421E35 /* Pods_iplix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B408CB68927379C3E9DE9F /* Pods_iplix.framework */; };
 		24432A54243DAB3D00421E35 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24432A53243DAB3D00421E35 /* SearchViewController.swift */; };
 		24432A57243DB7D400421E35 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24432A55243DB7D400421E35 /* SearchTableViewCell.swift */; };
@@ -79,6 +80,7 @@
 		2431A50D243C44C000E7A62C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		2431A50E243C44C000E7A62C /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		2431A513243C861D00E7A62C /* MovieAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAboutViewController.swift; sourceTree = "<group>"; };
+		2439FA6F244D693600E5DDFB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		24432A4B243D9DCF00421E35 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24432A53243DAB3D00421E35 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		24432A55243DB7D400421E35 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				2431A4F4243C36AA00E7A62C /* NetworkManager.swift */,
 				2411612824459A8800854B89 /* FirebaseManager.swift */,
 				245888A22446FE5900F7511F /* RealmManager.swift */,
+				2439FA6F244D693600E5DDFB /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				2431A50B243C447700E7A62C /* PopularViewCell.swift in Sources */,
 				240229CA243EE45500DBF3A9 /* SeeAllViewController.swift in Sources */,
 				240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */,
+				2439FA70244D693600E5DDFB /* Extensions.swift in Sources */,
 				24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */,
 				24C825FE2440304D004944E8 /* PersonCollectionViewCell.swift in Sources */,
 			);

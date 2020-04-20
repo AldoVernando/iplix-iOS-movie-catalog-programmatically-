@@ -120,7 +120,7 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 
-// MARK: SearchViewController Functions
+// MARK: Functions
 extension SearchViewController {
     
     

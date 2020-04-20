@@ -105,46 +105,6 @@ class MovieDetailViewController: UIViewController {
 }
 
 
-// MARK: UIImageView
-extension UIImageView
-{
-    func addBlurEffect()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
-    }
-    
-}
-
-
-// MARK: UIView
-extension UIView {
-
-    enum ViewSide {
-        case Left, Right, Top, Bottom
-    }
-
-    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
-
-        let border = CALayer()
-        border.backgroundColor = color
-
-        switch side {
-        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
-        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
-        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
-        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
-        }
-
-        layer.addSublayer(border)
-    }
-}
-
-
 // MARK: Functions
 extension MovieDetailViewController {
     
@@ -152,12 +112,11 @@ extension MovieDetailViewController {
     // set up view controller
     func setUp() {
         
-        checkFavorite()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        checkFavorite()
         poster.addBlurEffect()
-        foregroundPoster.layer.masksToBounds = true
-        foregroundPoster.layer.borderWidth = 1.5
-        foregroundPoster.layer.borderColor = UIColor.white.cgColor
+        foregroundPoster.addBorderWhiteLine()
+        foregroundPoster.setCornerRadius(radius: 10)
         
         if let mov = movie {
             if let backdrop = mov.backdrop_path {
@@ -199,38 +158,43 @@ extension MovieDetailViewController {
     func changeFav() {
         var image = "bookmark"
         
-        // add to fav
-        if isFavorite == false {
-            image = "bookmark.fill"
-            
-            if let mov = movie {
+        if UserDefaults.standard.string(forKey: "userId") == nil {
+            showAlert(message: "You must login to add movie to favorite")
+        }
+        else {
+            // add to fav
+            if isFavorite == false {
+                image = "bookmark.fill"
                 
-                let favMovie = FavoriteMovie()
-                favMovie.id = mov.id!
-                favMovie.title = mov.title!
-                favMovie.poster_path = mov.poster_path!
-                
-                if let genreId = mov.genre_ids?.first {
-                    let genre = network.genres.filter({ $0.id == genreId })
-                    favMovie.genre = genre[0].name
-                } else {
-                    favMovie.genre = " "
+                if let mov = movie {
+                    
+                    let favMovie = FavoriteMovie()
+                    favMovie.id = mov.id!
+                    favMovie.title = mov.title!
+                    favMovie.poster_path = mov.poster_path!
+                    
+                    if let genreId = mov.genre_ids?.first {
+                        let genre = network.genres.filter({ $0.id == genreId })
+                        favMovie.genre = genre[0].name
+                    } else {
+                        favMovie.genre = " "
+                    }
+                    
+                    realm.saveFavMovie(fav: favMovie)
                 }
                 
-                realm.saveFavMovie(fav: favMovie)
+            }
+            // remove from fav
+            else {
+                if let data = tempFav {
+                    realm.deleteFavMovie(fav: data)
+                }
             }
             
+            favBtn.image = UIImage(systemName: image)
+            
+            isFavorite = !isFavorite
         }
-        // remove from fav
-        else {
-            if let data = tempFav {
-                realm.deleteFavMovie(fav: data)
-            }
-        }
-        
-        favBtn.image = UIImage(systemName: image)
-        
-        isFavorite = !isFavorite
     }
     
     
@@ -264,6 +228,16 @@ extension MovieDetailViewController {
         animations: {
             self.contentView.addSubview(view)
         }, completion: nil)
+    }
+    
+    
+    // show alert
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Information", message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
