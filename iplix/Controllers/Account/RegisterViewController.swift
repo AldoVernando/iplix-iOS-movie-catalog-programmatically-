@@ -28,7 +28,6 @@ class RegisterViewController: UIViewController {
 
     @IBAction func registerBtn(_ sender: UIButton) {
         
-        let id = UUID()
         let usernameText = username.text
         let dobText = dob.text
         let emailText = email.text
@@ -36,11 +35,8 @@ class RegisterViewController: UIViewController {
         
         if validate() {
         
-            let user = User(id: id.uuidString, username: usernameText!, dob: dobText!, email: emailText!, password: passText!)
-            firebase.createUser(user: user)
-            
-            let parent = self.parent as! AccountAuthViewController
-            parent.showLogin()
+            let user = User(username: usernameText!, dob: dobText!, email: emailText!, password: passText!)
+            firebase.createUser(user: user, vc: self)
             
         }
     }
@@ -93,11 +89,11 @@ extension RegisterViewController {
     func validate() -> Bool {
         
         if username.text!.isEmpty || dob.text!.isEmpty || email.text!.isEmpty || password.text!.isEmpty || confirmationPassword.text!.isEmpty {
-            showAlert(message: "All data must be filled")
+            Helper.showAlert(message: "All data must be filled", vc: self)
             return false
         }
         else if password.text != confirmationPassword.text {
-            showAlert(message: "Confirmation password not same with password")
+            Helper.showAlert(message: "Confirmation password not same with password", vc: self)
             return false
         }
         
@@ -105,14 +101,7 @@ extension RegisterViewController {
     }
 
     
-    // show alert
-    func showAlert(message: String) {
-        let alertController = UIAlertController(title: "Information", message:
-            message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-
-        self.present(alertController, animated: true, completion: nil)
-    }
+   
     
     
     // dismiss keyboard when tapped out of keyboard

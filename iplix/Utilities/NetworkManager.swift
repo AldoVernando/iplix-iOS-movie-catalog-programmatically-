@@ -13,9 +13,7 @@ class NetworkManager {
     
     var delegate: NetworkDelegate!
    
-    let movieURL = "https://api.themoviedb.org/3/movie"
     let posterURL = "https://image.tmdb.org/t/p/w500"
-    let genreURL = "https://api.themoviedb.org/3/genre/list?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US"
     let moviePageURL = "https://www.themoviedb.org/movie/"
     let personURL = "https://api.themoviedb.org/3/person"
     
@@ -79,7 +77,7 @@ extension NetworkManager {
     // fetch movie detail reviews
     func getMovieReview(movieId: String, completion: @escaping ([Review]) -> ()) {
         
-        let finalURL = "\(movieURL)/\(movieId)/reviews?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=1"
+        let finalURL = "https://api.themoviedb.org/3/movie/\(movieId)/reviews?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=1"
         
         AF.request(finalURL, method: .get).responseDecodable(of: ReviewResult.self) { response in
             guard let review = response.value?.results else { return }
@@ -115,6 +113,9 @@ extension NetworkManager {
     
     // fetch genre list
     func getGenres(completion: @escaping ([Genre]) -> ()) {
+        
+        let genreURL = "https://api.themoviedb.org/3/genre/list?\(parameters["apiKey"]!)&\(parameters["language"]!)"
+        
         AF.request(genreURL, method: .get).responseDecodable(of: ResultGenres.self) { response in
                 guard let genres = response.value?.genres else { return }
                 completion(genres)
@@ -160,7 +161,7 @@ extension NetworkManager {
     
     // generate movie URL
     func createMovieURL(type: String, page: Int) -> String{
-        let URL = "\(movieURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
+        let URL = "https://api.themoviedb.org/3/movie/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
         
         return URL
     }
@@ -181,7 +182,6 @@ extension NetworkManager {
         return URL
     }
     
-   
 }
 
 

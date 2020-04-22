@@ -25,11 +25,22 @@ extension FirebaseManager {
     
     
     // create user
-    func createUser(user: User) {
+    func createUser(user: User, vc: UIViewController) {
         
-        let userRef = ref.child("users").child(user.id!)
-        
-        userRef.updateChildValues(user.getData())
+        Auth.auth().createUser(withEmail: user.email!, password: user.password!) { authResult, error in
+            
+            if let err = error {
+                Helper.showAlert(message: err.localizedDescription, vc: vc)
+            } else {
+                let ref = Database.database().reference()
+                ref.child("users").child((authResult?.user.uid)!).setValue(user.getData())
+                
+                Helper.showAlert(message: "Register success", vc: vc)
+                
+                let parent = vc.parent as! AccountAuthViewController
+                parent.showLogin()
+            }
+        }
     }
     
     
@@ -45,7 +56,7 @@ extension FirebaseManager {
             let email = value["email"] as! String
             let dob = value["dob"] as! String
                 
-            let user = User(id: userId, username: username, dob: dob, email: email, password: "")
+            let user = User(username: username, dob: dob, email: email, password: "")
             
             self.publishUser.onNext(user)
         })
@@ -53,40 +64,21 @@ extension FirebaseManager {
     
     
     // check login
-    func checkLogin(email: String, password: String) {
+    func checkLogin(email: String, password: String, vc: UIViewController) {
         
-        let userRef = self.ref.child("users")
-
-        userRef.observeSingleEvent(of: .value) { snapshot in
-            
-            let enumerator = snapshot.children
-                    
-            DispatchQueue.main.async {
-                var isUser = false
+       Auth.auth().signIn(withEmail: email, password: password) { authResult,
+        error in
+            if let err = error {
+                Helper.showAlert(message: err.localizedDescription, vc: vc)
+            } else {
+                UserDefaults.standard.set(authResult?.user.uid, forKey: "userId")
                 
-                while let child = enumerator.nextObject() as? DataSnapshot {
-                    
-                    let childSnapshot = snapshot.childSnapshot(forPath: child.key)
-                    
-                    guard let dict = childSnapshot.value as? [String: Any] else { continue }
-                    
-                    let checkEmail = dict["email"] as! String
-                    let checkPass = dict["password"] as! String
-                    
-                    if email == checkEmail && password == checkPass {
-                        
-                        isUser = true
-                        self.publishUserId.onNext(child.key)
-                        
-                        break
-                    }
-                    
-                }
-                if !isUser {
-                    self.publishUserId.onNext("invalid")
-                }
+                Helper.showAlert(message: "Login success", vc: vc)
+                
+                let accountView = vc.parent as! AccountAuthViewController
+                accountView.showProfile()
             }
-        }
+       }
     }
     
 }

@@ -11,9 +11,25 @@ import PaginatedTableView
 import SDWebImage
 
 class SearchViewController: UIViewController {
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: PaginatedTableView!
+    
+//    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var tableView: PaginatedTableView!
+    
+    private let searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.placeholder = "Search movies"
+        search.translatesAutoresizingMaskIntoConstraints = false
+        
+        return search
+    }()
+    
+    private let tableView: PaginatedTableView = {
+        let tv = PaginatedTableView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.allowsSelection = false
+        
+        return tv
+    }()
     
     var movieToSend: Movie?
     var movies: [Movie] = []
@@ -23,6 +39,23 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(searchBar)
+        view.addSubview(tableView)
+        
+        
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            searchBar.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+        ])
         
         setUp()
     }

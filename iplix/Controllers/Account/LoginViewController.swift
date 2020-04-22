@@ -23,15 +23,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setUp()
-        
     }
 
     @IBAction func loginBtn(_ sender: UIButton) {
-        let email = emailText.text
-        let pass = passwordText.text?.sha256()
-     
-        firebase.checkLogin(email: email!, password: pass!)
         
+        let email = emailText.text
+        let pass = passwordText.text
+     
+        firebase.checkLogin(email: email!, password: pass!, vc: self)
     }
     
 }
@@ -63,7 +62,6 @@ extension LoginViewController {
     func setUp() {
         loginBtn.layer.cornerRadius = 10
         setDelegate()
-        subscribeToFirebaseUser()
         hideKeyboardWhenTappedAround()
     }
     
@@ -72,39 +70,6 @@ extension LoginViewController {
     func setDelegate() {
         emailText.delegate = self
         passwordText.delegate = self
-    }
-    
-    
-    // subscribe to check login firebase user
-    func subscribeToFirebaseUser() {
-        firebase.publishUserId.subscribe(
-            onNext: { response in
-                self.validateLogin(userId: response)
-            }
-        ).disposed(by: bag)
-    }
-    
-    
-    // validate login
-    func validateLogin(userId: String) {
-        if userId == "invalid" {
-            showAlert(message: "Invalid email or password")
-        } else {
-            UserDefaults.standard.set(userId, forKey: "userId")
-            
-            let accountView = parent as! AccountAuthViewController
-            accountView.showProfile()
-        }
-    }
-    
-    
-    // show alert
-    func showAlert(message: String) {
-        let alertController = UIAlertController(title: "Information", message:
-            message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-
-        self.present(alertController, animated: true, completion: nil)
     }
     
     

@@ -7,21 +7,19 @@
 //
 
 import Foundation
-import CryptoSwift
 
 class User {
-    var id:String?
+
     var username: String?
     var dob: String?
     var email: String?
     var password: String?
     
-    init(id: String, username: String, dob: String, email: String, password: String) {
-        self.id = id
+    init(username: String, dob: String, email: String, password: String) {
         self.username = username
         self.dob = dob
         self.email = email
-        self.password = password.sha256()
+        self.password = password
     }
     
     
@@ -30,11 +28,9 @@ class User {
         
         var dict = [String: Any]()
         
-        dict.updateValue(self.id!, forKey: "id")
         dict.updateValue(self.username!, forKey: "username")
         dict.updateValue(self.dob!, forKey: "dob")
         dict.updateValue(self.email!, forKey: "email")
-        dict.updateValue(self.password!, forKey: "password")
         
         return dict
     }

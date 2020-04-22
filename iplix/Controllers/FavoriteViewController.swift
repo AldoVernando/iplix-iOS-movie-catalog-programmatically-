@@ -11,8 +11,16 @@ import RealmSwift
 
 class FavoriteViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var message: UILabel!
+    var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    private let message: UILabel = {
+        let label = UILabel()
+        label.text = "You have no favorite movie"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     
     let realm = RealmManager()
     var movies: [FavoriteMovie] = []
@@ -21,13 +29,35 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 300, height: 400)
+        
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.backgroundColor = .white
+        view.addSubview(collectionView)
+        view.addSubview(message)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            
+            message.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            message.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+        
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         setUp()
     }
-        
 }
 
 

@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WB-ko-wos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.913043478261" y="-695.08928571428567"/>
+            <point key="canvasLocation" x="2112" y="-695"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -421,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="95.758928571428569"/>
+            <point key="canvasLocation" x="2114" y="96"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="dc3-Xb-vcS">
@@ -557,6 +557,7 @@
                         <outlet property="rating" destination="5ie-Gt-6rq" id="Bfj-kg-tAZ"/>
                         <outlet property="releasedDate" destination="MdQ-N7-S6H" id="Px0-eS-3Ee"/>
                         <outlet property="reviewBarBtn" destination="WaX-v3-gzF" id="F32-2X-SyX"/>
+                        <segue destination="AsH-Ha-AHx" kind="show" identifier="goToAccount" id="3xT-KS-0VW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0c-L3-Hed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -802,7 +803,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mX7-Hm-emk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="96"/>
+            <point key="canvasLocation" x="-1401" y="96"/>
         </scene>
         <!--Iplix-->
         <scene sceneID="LbI-AE-yRV">
@@ -1006,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9St-O5-xoH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="871"/>
+            <point key="canvasLocation" x="2113" y="871"/>
         </scene>
         <!--Movie Review View Controller-->
         <scene sceneID="d6r-op-hLr">
@@ -1070,6 +1071,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="WD0-1H-dPf"/>
+        <segue reference="3xT-KS-0VW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

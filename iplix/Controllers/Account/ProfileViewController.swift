@@ -65,7 +65,6 @@ extension ProfileViewController {
         username.text = user.username
         email.text = user.email
         dob.text = user.dob
-        
     }
     
 }

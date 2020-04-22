@@ -75,7 +75,6 @@ extension AccountAuthViewController {
         
         let accountView = parent as! AccountViewController
         accountView.showProfile()
-        
     }
     
     

@@ -11,7 +11,13 @@ import SDWebImage
 
 class ViewController: UIViewController, NetworkDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView: UITableView = {
+        let tv = UITableView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.allowsSelection = false
+        
+        return tv
+    }()
     
     var movieToSend: Movie?
     var type: String = ""
@@ -21,6 +27,18 @@ class ViewController: UIViewController, NetworkDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(tableView)
+        
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+        ])
         
         setUp()
     }
@@ -139,7 +157,15 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
     // perform segue to movie detail
     func gotoDetail(movie: Movie) {
         movieToSend = movie
-        performSegue(withIdentifier:"goToDetail", sender: self)
+//        performSegue(withIdentifier:"goToDetail", sender: self)
+        let detailVC = MovieDetailViewController()
+        detailVC.movie = movie
+        detailVC.modalPresentationStyle = .fullScreen
+        
+//        detailVC.presentingViewController
+//        present(detailVC, animated: true, completion: nil)
+        navigationController?.pushViewController(detailVC, animated: true)
+//        self.showDetailViewController(detailVC, sender: self)
     }
     
     
