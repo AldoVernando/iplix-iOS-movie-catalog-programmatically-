@@ -564,10 +564,10 @@
             </objects>
             <point key="canvasLocation" x="3922" y="62"/>
         </scene>
-        <!--Movie About View Controller-->
+        <!--View Controller-->
         <scene sceneID="R30-2n-Ij1">
             <objects>
-                <viewController storyboardIdentifier="MovieAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IeJ-dF-I0k" customClass="MovieAboutViewController" customModule="iplix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IeJ-dF-I0k" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4TR-W8-J1r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

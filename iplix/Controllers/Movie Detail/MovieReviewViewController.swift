@@ -10,7 +10,13 @@ import UIKit
 
 class MovieReviewViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView: UITableView = {
+        let tv = UITableView()
+        tv.allowsSelection = false
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tv
+    }()
 
     var reviews: [Review] = []
     var movie: Movie?
@@ -18,6 +24,17 @@ class MovieReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -350)
+        
+        ])
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -34,26 +51,25 @@ class MovieReviewViewController: UIViewController {
 extension MovieReviewViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count + 1
+        return reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row != 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewTableViewCell
             
-            let review = reviews[indexPath.row - 1]
+            let review = reviews[indexPath.row]
             
             cell.author.text = review.author
             cell.content.text = review.content
             
             return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "review", for: indexPath)
-            
-            return cell
-        }
+        
+//        else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "review", for: indexPath)
+//
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

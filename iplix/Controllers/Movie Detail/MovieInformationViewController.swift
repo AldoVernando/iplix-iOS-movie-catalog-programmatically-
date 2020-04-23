@@ -10,16 +10,144 @@ import UIKit
 
 class MovieInformationViewController: UIViewController {
 
-    @IBOutlet weak var genre: UILabel!
-    @IBOutlet weak var language: UILabel!
-    @IBOutlet weak var companies: UILabel!
-    @IBOutlet weak var countries: UILabel!
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Information"
+        label.font = .boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let genreLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Genre"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let genre: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let languageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Language"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let language: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let companyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Production Companies"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let companies: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let countryLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Production Countries"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let countries: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
     var movieDetail: MovieDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addSubview(infoLabel)
+        view.addSubview(genreLabel)
+        view.addSubview(genre)
+        view.addSubview(languageLabel)
+        view.addSubview(language)
+        view.addSubview(companyLabel)
+        view.addSubview(companies)
+        view.addSubview(countryLabel)
+        view.addSubview(countries)
+        
+        NSLayoutConstraint.activate([
+            
+            // info label constraints
+            infoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            infoLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            infoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // genre label constraints
+            genreLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 20),
+            genreLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            genreLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // movie genres constraint
+            genre.topAnchor.constraint(equalTo: genreLabel.bottomAnchor, constant: 10),
+            genre.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            genre.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // language label constraints
+            languageLabel.topAnchor.constraint(equalTo: genre.bottomAnchor, constant: 16),
+            languageLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            languageLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // movie languages constraints
+            language.topAnchor.constraint(equalTo: languageLabel.bottomAnchor, constant: 10),
+            language.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            language.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // company label constraints
+            companyLabel.topAnchor.constraint(equalTo: language.bottomAnchor, constant: 16),
+            companyLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            companyLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // movie companies constraints
+            companies.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: 10),
+            companies.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            companies.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+
+            // country label constraints
+            countryLabel.topAnchor.constraint(equalTo: companies.bottomAnchor, constant: 16),
+            countryLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            countryLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+            // movie countries constraints
+            countries.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 10),
+            countries.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            countries.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            
+        ])
+        
+        
         if let mov = movieDetail {
             setData(movie: mov)
         }

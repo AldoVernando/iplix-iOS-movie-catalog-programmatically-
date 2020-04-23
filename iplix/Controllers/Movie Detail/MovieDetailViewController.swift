@@ -186,10 +186,13 @@ class MovieDetailViewController: UIViewController {
             contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
             contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
-            
         ])
         
         setUp()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        aboutBarBtn(aboutBtn)
     }
     
     @objc func backBtn(_ sender: UIBarButtonItem) {
@@ -211,17 +214,16 @@ class MovieDetailViewController: UIViewController {
     @objc func aboutBarBtn(_ sender: UIBarButtonItem) {
         
         changeColor(sender: sender)
-        let vc = showViewController(controller: "MovieAboutViewController") as! MovieAboutViewController
+        let vc = MovieAboutViewController()
         vc.movie = movie
         changeContentView(view: vc.view)
-        
     }
     
     
     @objc func infoBarBtn(_ sender: UIBarButtonItem) {
         
         changeColor(sender: sender)
-        let vc = showViewController(controller: "MovieInformationViewController") as! MovieInformationViewController
+        let vc = MovieInformationViewController()
         
         if let mov = movie {
             network.getMovieDetail(movieId: String(mov.id!)) { response in
@@ -238,7 +240,7 @@ class MovieDetailViewController: UIViewController {
     @objc func reviewBarBtn(_ sender: UIBarButtonItem) {
         
         changeColor(sender: sender)
-        let vc = showViewController(controller: "MovieReviewViewController") as! MovieReviewViewController
+        let vc = MovieReviewViewController()
         
         if let mov = movie {
             vc.movie = mov
@@ -281,7 +283,6 @@ extension MovieDetailViewController {
             rating.text = String(mov.vote_average!)
         }
         
-//        aboutBarBtn(aboutBarBtn)
     }
     
     
@@ -293,17 +294,6 @@ extension MovieDetailViewController {
         reviewBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
         sender.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
-    
-    
-    // show selected view controller
-    func showViewController(controller: String) -> UIViewController {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: controller)
-        
-        return viewController
-    }
-    
     
     // change favorite icon
     func changeFav() {
@@ -377,6 +367,9 @@ extension MovieDetailViewController {
         
         UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve,
         animations: {
+            for view in self.contentView.subviews {
+                view.removeFromSuperview()
+            }
             self.contentView.addSubview(view)
         }, completion: nil)
     }
