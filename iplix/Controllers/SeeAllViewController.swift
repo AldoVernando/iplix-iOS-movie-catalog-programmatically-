@@ -10,7 +10,18 @@ import UIKit
 
 class SeeAllViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    private let collectionView: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = .init(top: 20, left: 20, bottom: 20, right: 20)
+        
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.backgroundColor = .white
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return cv
+    }()
+    
     
     var movies: [Movie] = []
     
@@ -22,6 +33,18 @@ class SeeAllViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            
+            // collection view constraints
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        
+        ])
         
         setUp()
     }
@@ -159,7 +182,6 @@ extension SeeAllViewController {
                 }
             }
             
-//            sleep(2)
         }
     }
     

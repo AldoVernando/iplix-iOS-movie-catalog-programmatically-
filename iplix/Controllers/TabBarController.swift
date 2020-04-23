@@ -13,7 +13,15 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let accountBtn: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(accountBtn(_:)) )
+        
+        navigationItem.rightBarButtonItem = accountBtn
+        
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [ .font: UIFont.systemFont(ofSize: 30) ]
+        
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         self.title = "Iplix"
         
         let homeController = ViewController()
@@ -28,6 +36,12 @@ class TabBarController: UITabBarController {
         let tabBarList = [homeController, favoriteController, searchController]
         
         viewControllers = tabBarList
+    }
+    
+    @objc func accountBtn(_ sender: UIBarButtonItem) {
+        
+        let vc = AccountViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

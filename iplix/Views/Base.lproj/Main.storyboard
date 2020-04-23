@@ -128,6 +128,7 @@
                                 <rect key="frame" x="16" y="228" width="382" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1070,8 +1071,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WD0-1H-dPf"/>
-        <segue reference="3xT-KS-0VW"/>
+        <segue reference="Noj-hf-mLw"/>
+        <segue reference="28Y-oh-bxk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

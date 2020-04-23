@@ -10,17 +10,45 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
-    @IBOutlet weak var accountView: UIView!
+//    @IBOutlet weak var accountView: UIView!
+    
+    private let accountView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
+        let backBtn = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backBtn(_:)) )
+        
+        navigationItem.leftBarButtonItem = backBtn
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(accountView)
+        
+        NSLayoutConstraint.activate([
+        
+            // account view constraints
+            accountView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            accountView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            accountView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            accountView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
         checkLogin()
     }
     
-    @IBAction func backBtn(_ sender: UIBarButtonItem) {
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    @objc func backBtn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
@@ -34,23 +62,25 @@ extension AccountViewController {
     // check user login session
     func checkLogin() {
         
-        var vc: UIViewController = showViewController(controller: "ProfileViewController") as! ProfileViewController
-        navigationItem.title = "Profile"
-        
         if UserDefaults.standard.string(forKey: "userId") == nil {
-            vc = showViewController(controller: "AccountAuthViewController") as! AccountAuthViewController
+            let vc = AccountAuthViewController()
             navigationItem.title = "Account"
+            self.addChild(vc)
+            self.changeContentView(view: vc.view)
+        } else {
+            let vc = ProfileViewController()
+            navigationItem.title = "Profile"
+            self.addChild(vc)
+            self.changeContentView(view: vc.view)
         }
         
-        self.addChild(vc)
-        self.changeContentView(view: vc.view)
     }
     
     
     // show profile view
     func showProfile() {
         
-        let vc = showViewController(controller: "ProfileViewController") as! ProfileViewController
+        let vc = ProfileViewController()
         navigationItem.title = "Profile"
         
         self.addChild(vc)

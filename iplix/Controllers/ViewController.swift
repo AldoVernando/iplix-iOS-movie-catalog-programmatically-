@@ -32,7 +32,6 @@ class ViewController: UIViewController, NetworkDelegate {
         
         view.addSubview(tableView)
         
-        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -125,60 +124,29 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
     }
     
     
-    // prepare before perform segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToDetail" {
-            if let vc = segue.destination as? MovieDetailViewController {
-                if let movieData = movieToSend {
-                    vc.movie = movieData
-                }
-            }
-        }
-        if segue.identifier == "goToSeeAll" {
-            if let vc = segue.destination as? SeeAllViewController {
-                    vc.type = type
-            }
-        }
-        if segue.identifier == "goToPerson" {
-            if let vc = segue.destination as? PersonDetailViewController {
-                vc.personId = personId
-            }
-        }
-    }
-    
-    
-    // perform segue to account
-    func goToAccount() {
-        performSegue(withIdentifier:"goToAccount", sender: self)
-    }
-    
-    
     // perform segue to movie detail
     func gotoDetail(movie: Movie) {
-        movieToSend = movie
-//        performSegue(withIdentifier:"goToDetail", sender: self)
-        let detailVC = MovieDetailViewController()
-        detailVC.movie = movie
-        detailVC.modalPresentationStyle = .fullScreen
         
-//        detailVC.presentingViewController
-//        present(detailVC, animated: true, completion: nil)
-        navigationController?.pushViewController(detailVC, animated: true)
-//        self.showDetailViewController(detailVC, sender: self)
+        let vc = MovieDetailViewController()
+        vc.movie = movie
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
     // perform segue to all movies
     func goToAll(type: String) {
-        self.type = type
-        performSegue(withIdentifier: "goToSeeAll", sender: self)
+        
+        let vc = SeeAllViewController()
+        vc.type = type
+        navigationController?.pushViewController(vc, animated: true)
      }
     
     
     // perform segue to person detail
     func goToPerson(id: Int) {
-        self.personId = id
-        performSegue(withIdentifier: "goToPerson", sender: self)
+        
+        let vc = PersonDetailViewController()
+        vc.personId = id
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
