@@ -11,18 +11,41 @@ import RxSwift
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var dob: UILabel!
-    @IBOutlet weak var registerBtn: UIButton!
+    let customView = ProfileView()
+    var profileImage: UIImageView!
+    var username: UILabel!
+    var emailLabel: UILabel!
+    var email: UILabel!
+    var dobLabel: UILabel!
+    var dob: UILabel!
+    var editBtn: UIButton!
+    var logoutBtn: UIButton!
     
     let firebase = FirebaseManager()
     let bag = DisposeBag()
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        registerBtn.layer.cornerRadius = 10
+        profileImage = customView.profileImage
+        username = customView.username
+        emailLabel = customView.emailLabel
+        email = customView.email
+        dobLabel = customView.dobLabel
+        dob = customView.dob
+        editBtn = customView.editBtn
+        logoutBtn = customView.logoutBtn
+        
+        editBtn.addTarget(self, action: #selector(editProfileBtn(_:)), for: .touchUpInside)
+        logoutBtn.addTarget(self, action: #selector(logoutBtn(_:)), for: .touchUpInside)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,9 +53,13 @@ class ProfileViewController: UIViewController {
     }
     
     
-    @IBAction func logoutBtn(_ sender: UIButton) {
+    @objc func logoutBtn(_ sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "userId")
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func editProfileBtn(_ sender: UIButton) {
+        print("Edit button pressed")
     }
     
 }

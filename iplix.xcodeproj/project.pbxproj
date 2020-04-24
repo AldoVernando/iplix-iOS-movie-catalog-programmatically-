@@ -18,7 +18,6 @@
 		2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4DC243C34A900E7A62C /* AppDelegate.swift */; };
 		2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4DE243C34A900E7A62C /* SceneDelegate.swift */; };
 		2431A4E1243C34A900E7A62C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4E0243C34A900E7A62C /* ViewController.swift */; };
-		2431A4E4243C34A900E7A62C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2431A4E2243C34A900E7A62C /* Main.storyboard */; };
 		2431A4E6243C34AC00E7A62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2431A4E5243C34AC00E7A62C /* Assets.xcassets */; };
 		2431A4E9243C34AC00E7A62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2431A4E7243C34AC00E7A62C /* LaunchScreen.storyboard */; };
 		2431A4F5243C36AB00E7A62C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431A4F4243C36AA00E7A62C /* NetworkManager.swift */; };
@@ -53,6 +52,20 @@
 		24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDB24445FF200C45497 /* LoginViewController.swift */; };
 		24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDD2444600400C45497 /* RegisterViewController.swift */; };
 		24EB60FB244E9F7D0072CB74 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB60FA244E9F7D0072CB74 /* Helper.swift */; };
+		24EF234A2452D1070006E4CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23492452D1070006E4CE /* HomeView.swift */; };
+		24EF234C2452D8EE0006E4CE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF234B2452D8EE0006E4CE /* FavoriteView.swift */; };
+		24EF234E2452DDDA0006E4CE /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF234D2452DDDA0006E4CE /* SearchView.swift */; };
+		24EF23502452E42A0006E4CE /* SeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF234F2452E42A0006E4CE /* SeeAllView.swift */; };
+		24EF23562452E7A60006E4CE /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23552452E7A60006E4CE /* PersonDetailView.swift */; };
+		24EF23582452ED580006E4CE /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23572452ED580006E4CE /* MovieDetailView.swift */; };
+		24EF235A2452EFE60006E4CE /* MovieAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23592452EFE60006E4CE /* MovieAboutView.swift */; };
+		24EF235C2452EFF70006E4CE /* MovieInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF235B2452EFF70006E4CE /* MovieInformationView.swift */; };
+		24EF235E2452F0080006E4CE /* MovieReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF235D2452F0080006E4CE /* MovieReviewView.swift */; };
+		24EF23602452FB980006E4CE /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF235F2452FB980006E4CE /* AccountView.swift */; };
+		24EF23622452FD270006E4CE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23612452FD270006E4CE /* ProfileView.swift */; };
+		24EF23642452FF5D0006E4CE /* AccountAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23632452FF5D0006E4CE /* AccountAuthView.swift */; };
+		24EF23662453004E0006E4CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23652453004E0006E4CE /* LoginView.swift */; };
+		24EF2368245301900006E4CE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF2367245301900006E4CE /* RegisterView.swift */; };
 		24FEEF9B24496A0D002EEBC0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FEEF9A24496A0D002EEBC0 /* Video.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +82,6 @@
 		2431A4DC243C34A900E7A62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2431A4DE243C34A900E7A62C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2431A4E0243C34A900E7A62C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2431A4E3243C34A900E7A62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2431A4E5243C34AC00E7A62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2431A4E8243C34AC00E7A62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2431A4EA243C34AC00E7A62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +117,20 @@
 		24DCDCDB24445FF200C45497 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		24DCDCDD2444600400C45497 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		24EB60FA244E9F7D0072CB74 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		24EF23492452D1070006E4CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		24EF234B2452D8EE0006E4CE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		24EF234D2452DDDA0006E4CE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		24EF234F2452E42A0006E4CE /* SeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllView.swift; sourceTree = "<group>"; };
+		24EF23552452E7A60006E4CE /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		24EF23572452ED580006E4CE /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		24EF23592452EFE60006E4CE /* MovieAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAboutView.swift; sourceTree = "<group>"; };
+		24EF235B2452EFF70006E4CE /* MovieInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformationView.swift; sourceTree = "<group>"; };
+		24EF235D2452F0080006E4CE /* MovieReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReviewView.swift; sourceTree = "<group>"; };
+		24EF235F2452FB980006E4CE /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		24EF23612452FD270006E4CE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		24EF23632452FF5D0006E4CE /* AccountAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthView.swift; sourceTree = "<group>"; };
+		24EF23652453004E0006E4CE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		24EF2367245301900006E4CE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		24FEEF9A24496A0D002EEBC0 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		59B408CB68927379C3E9DE9F /* Pods_iplix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iplix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DD48CBF05F9418B9F5FB57 /* Pods-iplix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iplix.debug.xcconfig"; path = "Target Support Files/Pods-iplix/Pods-iplix.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,7 +217,7 @@
 				24C82607244035E5004944E8 /* Person */,
 				24C82606244035DD004944E8 /* Movie */,
 				24432A59243DD73800421E35 /* UInib */,
-				2431A4E2243C34A900E7A62C /* Main.storyboard */,
+				24EF23512452E73F0006E4CE /* UIView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +297,51 @@
 			isa = PBXGroup;
 			children = (
 				24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */,
+			);
+			path = "Person Detail";
+			sourceTree = "<group>";
+		};
+		24EF23512452E73F0006E4CE /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				24EF23532452E77E0006E4CE /* Account */,
+				24EF23522452E7710006E4CE /* Movie Detail */,
+				24EF23542452E7870006E4CE /* Person Detail */,
+				24EF23492452D1070006E4CE /* HomeView.swift */,
+				24EF234B2452D8EE0006E4CE /* FavoriteView.swift */,
+				24EF234D2452DDDA0006E4CE /* SearchView.swift */,
+				24EF234F2452E42A0006E4CE /* SeeAllView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		24EF23522452E7710006E4CE /* Movie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				24EF23572452ED580006E4CE /* MovieDetailView.swift */,
+				24EF23592452EFE60006E4CE /* MovieAboutView.swift */,
+				24EF235B2452EFF70006E4CE /* MovieInformationView.swift */,
+				24EF235D2452F0080006E4CE /* MovieReviewView.swift */,
+			);
+			path = "Movie Detail";
+			sourceTree = "<group>";
+		};
+		24EF23532452E77E0006E4CE /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				24EF235F2452FB980006E4CE /* AccountView.swift */,
+				24EF23612452FD270006E4CE /* ProfileView.swift */,
+				24EF23632452FF5D0006E4CE /* AccountAuthView.swift */,
+				24EF23652453004E0006E4CE /* LoginView.swift */,
+				24EF2367245301900006E4CE /* RegisterView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		24EF23542452E7870006E4CE /* Person Detail */ = {
+			isa = PBXGroup;
+			children = (
+				24EF23552452E7A60006E4CE /* PersonDetailView.swift */,
 			);
 			path = "Person Detail";
 			sourceTree = "<group>";
@@ -361,7 +432,6 @@
 				240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */,
 				2431A50C243C447700E7A62C /* PopularViewCell.xib in Resources */,
 				24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */,
-				2431A4E4243C34A900E7A62C /* Main.storyboard in Resources */,
 				24432A58243DB7D400421E35 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,15 +486,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */,
+				24EF23562452E7A60006E4CE /* PersonDetailView.swift in Sources */,
 				2431A4F5243C36AB00E7A62C /* NetworkManager.swift in Sources */,
 				245888A12446F98600F7511F /* FavoriteMovie.swift in Sources */,
+				24EF23622452FD270006E4CE /* ProfileView.swift in Sources */,
 				2431A4E1243C34A900E7A62C /* ViewController.swift in Sources */,
 				2431A514243C861D00E7A62C /* MovieAboutViewController.swift in Sources */,
+				24EF23582452ED580006E4CE /* MovieDetailView.swift in Sources */,
+				24EF235E2452F0080006E4CE /* MovieReviewView.swift in Sources */,
+				24EF23602452FB980006E4CE /* AccountView.swift in Sources */,
 				2431A4DD243C34A900E7A62C /* AppDelegate.swift in Sources */,
+				24EF2368245301900006E4CE /* RegisterView.swift in Sources */,
 				24C8260524403566004944E8 /* Person.swift in Sources */,
 				24FEEF9B24496A0D002EEBC0 /* Video.swift in Sources */,
 				245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */,
 				24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */,
+				24EF23662453004E0006E4CE /* LoginView.swift in Sources */,
 				2411612B24459E7E00854B89 /* User.swift in Sources */,
 				24DCDCD6244452C100C45497 /* ProfileViewController.swift in Sources */,
 				240229CC243F164600DBF3A9 /* MovieReviewViewController.swift in Sources */,
@@ -435,9 +512,14 @@
 				240229CE243F16F400DBF3A9 /* Review.swift in Sources */,
 				24C8260224403378004944E8 /* PersonTableViewCell.swift in Sources */,
 				2411612924459A8900854B89 /* FirebaseManager.swift in Sources */,
+				24EF235C2452EFF70006E4CE /* MovieInformationView.swift in Sources */,
+				24EF23642452FF5D0006E4CE /* AccountAuthView.swift in Sources */,
+				24EF23502452E42A0006E4CE /* SeeAllView.swift in Sources */,
 				245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */,
 				2443F61D24500006004A4D9A /* TabBarController.swift in Sources */,
+				24EF235A2452EFE60006E4CE /* MovieAboutView.swift in Sources */,
 				24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */,
+				24EF234A2452D1070006E4CE /* HomeView.swift in Sources */,
 				24EB60FB244E9F7D0072CB74 /* Helper.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
 				240BD08124481C13009806B2 /* FavoriteViewController.swift in Sources */,
@@ -448,8 +530,10 @@
 				2431A50B243C447700E7A62C /* PopularViewCell.swift in Sources */,
 				240229CA243EE45500DBF3A9 /* SeeAllViewController.swift in Sources */,
 				240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */,
+				24EF234E2452DDDA0006E4CE /* SearchView.swift in Sources */,
 				2439FA70244D693600E5DDFB /* Extensions.swift in Sources */,
 				24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */,
+				24EF234C2452D8EE0006E4CE /* FavoriteView.swift in Sources */,
 				24C825FE2440304D004944E8 /* PersonCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,14 +541,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2431A4E2243C34A900E7A62C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2431A4E3243C34A900E7A62C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2431A4E7243C34AC00E7A62C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

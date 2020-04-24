@@ -10,37 +10,26 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
-//    @IBOutlet weak var accountView: UIView!
+    let customView = AccountView()
+    var accountView: UIView!
     
-    private let accountView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    override func viewWillAppear(_ animated: Bool) {
+        view.frame = UIScreen.main.bounds
+    }
     
+    override func loadView() {
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        accountView = customView.accountView
+        
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
         let backBtn = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backBtn(_:)) )
-        
         navigationItem.leftBarButtonItem = backBtn
-        
-        view.backgroundColor = .white
-        
-        view.addSubview(accountView)
-        
-        NSLayoutConstraint.activate([
-        
-            // account view constraints
-            accountView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            accountView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            accountView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            accountView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
         
         checkLogin()
     }

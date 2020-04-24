@@ -9,53 +9,28 @@
 import UIKit
 
 class AccountAuthViewController: UIViewController {
-
-    private let segmentedControl: UISegmentedControl = {
-        let items = ["Login", "Register"]
-        let segment = UISegmentedControl(items: items)
-        segment.addTarget(self, action: #selector(indexSegmentChange(_:)), for: .valueChanged)
-        segment.translatesAutoresizingMaskIntoConstraints = false
-        
-        return segment
-    }()
     
-    private let contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+    let customView = AccountAuthView()
+    var segmentedControl: UISegmentedControl!
+    var contentView: UIView!
     
-        return view
-    }()
-    
+    override func loadView() {
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        view.backgroundColor = .white
-        view.addSubview(segmentedControl)
+        segmentedControl = customView.segmentedControl
+        contentView = customView.contentView
         
-//        view.addSubview(contentView)
+        segmentedControl.addTarget(self, action: #selector(indexSegmentChange(_:)), for: .valueChanged)
         
-        NSLayoutConstraint.activate([
-        
-            // segemented control constraints
-            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            segmentedControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            segmentedControl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // content view constraints
-//            contentView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-//            contentView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
-        
-//        print(segmentedControl.frame.width)
-//        showLogin()
+        showLogin()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    override func viewDidLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
 
     @objc func indexSegmentChange(_ sender: UISegmentedControl) {

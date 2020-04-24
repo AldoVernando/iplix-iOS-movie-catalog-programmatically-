@@ -28,7 +28,9 @@ class Helper {
             message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Login", style: .default, handler: { response in
             
-            vc.performSegue(withIdentifier: "goToAccount", sender: vc)
+            let loginVC = AccountViewController()
+            
+            vc.navigationController?.pushViewController(loginVC, animated: true)
         }))
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
 

@@ -1,38 +1,69 @@
 //
-//  MovieAboutViewController.swift
+//  MovieAboutView.swift
 //  iplix
 //
-//  Created by TEMP on 4/7/20.
+//  Created by TEMP on 4/24/20.
 //  Copyright © 2020 aldovernando. All rights reserved.
 //
 
 import UIKit
 import YoutubePlayer_in_WKWebView
 
-class MovieAboutViewController: UIViewController {
+class MovieAboutView: UIView {
+
+    let scroller: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scroll
+    }()
     
-    let customView = MovieAboutView()
-    var scroller: UIScrollView!
-    var content: UIView!
-    var aboutLabel: UILabel!
-    var overview: UILabel!
-    var trailerView: WKYTPlayerView!
+    let content: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
     
-    var movie: Movie?
-    let network = ViewController.network
+    let aboutLabel: UILabel = {
+        let label = UILabel()
+        label.text = "About"
+        label.font = .boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
     
-//    override func loadView() {
-//        view = customView
-//    }
+    let trailerView: WKYTPlayerView = {
+        let view = WKYTPlayerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let overview: UILabel = {
+        let label = UILabel()
+        label.text = "overview"
+        label.textColor = .systemGray
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
-        scroller = customView.scroller
-        content = customView.content
-        aboutLabel = customView.aboutLabel
-        overview = customView.overview
-        trailerView = customView.trailerView
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        createSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        createSubviews()
+    }
+    
+    func createSubviews() {
+        
+//        backgroundColor = .white
         
         content.addSubview(aboutLabel)
         content.addSubview(trailerView)
@@ -40,15 +71,15 @@ class MovieAboutViewController: UIViewController {
         
         scroller.addSubview(content)
         
-        view.addSubview(scroller)
+        addSubview(scroller)
         
         NSLayoutConstraint.activate([
 
             // scroll view constraints
-            scroller.topAnchor.constraint(equalTo: view.topAnchor),
-            scroller.leftAnchor.constraint(equalTo: view.leftAnchor),
-            scroller.rightAnchor.constraint(equalTo: view.rightAnchor),
-            scroller.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scroller.topAnchor.constraint(equalTo: topAnchor),
+            scroller.leftAnchor.constraint(equalTo: leftAnchor),
+            scroller.rightAnchor.constraint(equalTo: rightAnchor),
+            scroller.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             // content view constraints
             content.topAnchor.constraint(equalTo: scroller.topAnchor),
@@ -75,39 +106,6 @@ class MovieAboutViewController: UIViewController {
             overview.bottomAnchor.constraint(equalTo: content.bottomAnchor, constant: -20)
             
         ])
-        
-        if let mov = movie {
-            overview.text = mov.overview
-            overview.text! += mov.overview!
-            overview.text! += mov.overview!
-            showTrailer(id: mov.id!)
-        }
-    
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        scroller.contentSize = CGSize(width: UIScreen.main.bounds.width, height: content.frame.height + 350)
     }
 
-}
-
-
-// MARK: Functions
-extension MovieAboutViewController {
- 
-    
-    // show movie trailer
-    func showTrailer(id: Int) {
-        
-        network.getVideoURL(id: id) { response in
-            
-            if response.count > 1 {
-                self.trailerView.load(withVideoId: response[1].key!)
-            }
-            else {
-                self.trailerView.removeFromSuperview()
-                self.overview.topAnchor.constraint(equalTo: self.aboutLabel.bottomAnchor, constant: 16).isActive = true
-            }
-        }
-    }
 }

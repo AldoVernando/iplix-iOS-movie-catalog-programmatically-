@@ -10,13 +10,8 @@ import UIKit
 
 class MovieReviewViewController: UIViewController {
 
-    private let tableView: UITableView = {
-        let tv = UITableView()
-        tv.allowsSelection = false
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        
-        return tv
-    }()
+    let customView = MovieReviewView()
+    var tableView: UITableView!
 
     var reviews: [Review] = []
     var movie: Movie?
@@ -24,6 +19,8 @@ class MovieReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView = customView.tableView
         
         view.addSubview(tableView)
         

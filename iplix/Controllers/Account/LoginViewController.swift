@@ -12,90 +12,36 @@ import RxSwift
 
 class LoginViewController: UIViewController {
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Iplix"
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 30)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let emailText: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.tag = 0
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
-    
-    private let passwordText: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.tag = 1
-        textField.borderStyle = .roundedRect
-        textField.isSecureTextEntry = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-          
-        return textField
-    }()
-    
-    private let loginBtn: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
+    let customView = LoginView()
+    var titleLabel: UILabel!
+    var emailText: UITextField!
+    var passwordText: UITextField!
+    var loginBtn: UIButton!
     
     let firebase = FirebaseManager()
     let bag = DisposeBag()
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        emailText = customView.emailText
+        passwordText = customView.passwordText
+        loginBtn = customView.loginBtn
         
-        view.addSubview(titleLabel)
-        view.addSubview(emailText)
-        view.addSubview(passwordText)
-        view.addSubview(loginBtn)
-        
-        
-        NSLayoutConstraint.activate([
-            
-            // title label constraints
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // email textfield constraints
-            emailText.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            emailText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            emailText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // password textfield constraints
-            passwordText.topAnchor.constraint(equalTo: emailText.bottomAnchor, constant: 5),
-            passwordText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            passwordText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // login button constraints
-            loginBtn.topAnchor.constraint(equalTo: passwordText.bottomAnchor, constant: 10),
-            loginBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            loginBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-        ])
-        
+        loginBtn.addTarget(self, action: #selector(loginBtn(_:)), for: .touchUpInside)
         
         setUp()
     }
+    
+    override func viewDidLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
 
-    @IBAction func loginBtn(_ sender: UIButton) {
+    @objc func loginBtn(_ sender: UIButton) {
         
         let email = emailText.text
         let pass = passwordText.text
@@ -130,7 +76,6 @@ extension LoginViewController {
     
     // set up view controller
     func setUp() {
-        loginBtn.layer.cornerRadius = 10
         setDelegate()
         hideKeyboardWhenTappedAround()
     }

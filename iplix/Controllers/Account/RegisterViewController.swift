@@ -9,24 +9,40 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var dob: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var confirmationPassword: UITextField!
-    @IBOutlet weak var registerBtn: UIButton!
+    
+    let customView = RegisterView()
+    var titleLabel: UILabel!
+    var username: UITextField!
+    var dob: UITextField!
+    var email: UITextField!
+    var password: UITextField!
+    var confirmationPassword: UITextField!
+    var registerBtn: UIButton!
     
     let datePicker = UIDatePicker()
     let firebase = FirebaseManager()
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        username = customView.username
+        dob = customView.dob
+        email = customView.email
+        password = customView.password
+        confirmationPassword = customView.confirmationPassword
+        
         setUp()
     }
+    
+    override func viewDidLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
 
-    @IBAction func registerBtn(_ sender: UIButton) {
+    @objc func registerBtn(_ sender: UIButton) {
         
         let usernameText = username.text
         let dobText = dob.text
@@ -68,7 +84,6 @@ extension RegisterViewController {
     
     // set up view controller
     func setUp() {
-        registerBtn.layer.cornerRadius = 10
         setDelegate()
         showDatePicker()
         hideKeyboardWhenTappedAround()

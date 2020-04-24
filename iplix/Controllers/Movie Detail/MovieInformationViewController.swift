@@ -10,83 +10,31 @@ import UIKit
 
 class MovieInformationViewController: UIViewController {
 
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Information"
-        label.font = .boldSystemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let genreLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Genre"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let genre: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let languageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Language"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let language: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let companyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Production Companies"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let companies: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let countryLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Production Countries"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let countries: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
+    let customView = MovieInformationView()
+    var infoLabel: UILabel!
+    var genreLabel: UILabel!
+    var genre: UILabel!
+    var languageLabel: UILabel!
+    var language: UILabel!
+    var companyLabel: UILabel!
+    var companies: UILabel!
+    var countryLabel: UILabel!
+    var countries: UILabel!
     
     var movieDetail: MovieDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        infoLabel = customView.infoLabel
+        genreLabel = customView.genreLabel
+        genre = customView.genre
+        languageLabel = customView.languageLabel
+        language = customView.language
+        companyLabel = customView.companyLabel
+        companies = customView.companies
+        countryLabel = customView.countryLabel
+        countries = customView.countries
 
         view.addSubview(infoLabel)
         view.addSubview(genreLabel)

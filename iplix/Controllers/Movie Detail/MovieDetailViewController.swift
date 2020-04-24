@@ -12,85 +12,20 @@ import RealmSwift
 
 class MovieDetailViewController: UIViewController {
     
+    let customView = MovieDetailView()
+    var navBar: UINavigationBar!
+    var poster: UIImageView!
+    var foregroundPoster: UIImageView!
+    var movieTitle: UILabel!
+    var movieReleasedDate: UILabel!
+    var rating: UILabel!
+    var contentView: UIView!
+    
     var backBtn: UIBarButtonItem!
     var favBtn: UIBarButtonItem!
     var aboutBtn: UIBarButtonItem!
     var infoBtn: UIBarButtonItem!
     var reviewBtn: UIBarButtonItem!
-    
-    private let poster: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "poster"))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-    private let foregroundPoster: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "poster"))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-    private let navBar: UINavigationBar = {
-        let nav = UINavigationBar()
-        nav.barTintColor = #colorLiteral(red: 0.3507073532, green: 0.7858502538, blue: 0.7276070304, alpha: 1)
-        nav.translatesAutoresizingMaskIntoConstraints = false
-        
-        return nav
-    }()
-    
-    private let movieTitle: UILabel = {
-        let label = UILabel()
-        label.text = "The Avengers : End Game"
-        label.textAlignment = .left
-        label.numberOfLines = 2
-        label.lineBreakMode = .byTruncatingTail
-        label.font = .boldSystemFont(ofSize: 20)
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let movieReleasedDate: UILabel = {
-        let label = UILabel()
-        label.text = "2020-01-03"
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let rating: UILabel = {
-        let label = UILabel()
-        label.text = "8.5"
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let star: UIImageView = {
-        let image = UIImageView(image: UIImage(systemName: "star.fill"))
-        image.tintColor = .white
-        image.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-    private let contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
     
     let network = ViewController.network
     var movie: Movie?
@@ -99,18 +34,27 @@ class MovieDetailViewController: UIViewController {
     var tempFav: FavoriteMovie?
     var parentView: FavoriteViewController?
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
+        
+        navBar = customView.navBar
+        poster = customView.poster
+        foregroundPoster = customView.foregroundPoster
+        movieTitle = customView.movieTitle
+        movieReleasedDate = customView.movieReleasedDate
+        rating = customView.rating
+        contentView = customView.contentView
         
         backBtn = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backBtn(_:)) )
         backBtn.tintColor = .white
         
-        favBtn = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(backBtn(_:)) )
+        favBtn = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(favBtn(_:)) )
         favBtn.tintColor = .white
         
-//        navigationItem.backBarButtonItem = backBtn
         navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.isTranslucent = true
@@ -131,62 +75,7 @@ class MovieDetailViewController: UIViewController {
         reviewBtn.tintColor = #colorLiteral(red: 0.2093600929, green: 0.3236650825, blue: 0.4488521814, alpha: 1)
         
         navItem.rightBarButtonItems = [reviewBtn, infoBtn, aboutBtn]
-        
         navBar.setItems([navItem], animated: true)
-        
-        
-        view.addSubview(poster)
-        view.addSubview(navBar)
-        view.addSubview(foregroundPoster)
-        view.addSubview(movieTitle)
-        view.addSubview(movieReleasedDate)
-        view.addSubview(rating)
-        view.addSubview(star)
-        view.addSubview(contentView)
-        
-        NSLayoutConstraint.activate([
-            // background poster constraints
-            poster.topAnchor.constraint(equalTo: view.topAnchor),
-            poster.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            poster.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            poster.heightAnchor.constraint(equalToConstant: 300),
-            
-            // foreground poster constraints
-            foregroundPoster.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            foregroundPoster.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
-            foregroundPoster.heightAnchor.constraint(equalToConstant: 220),
-            foregroundPoster.widthAnchor.constraint(equalToConstant: 150),
-            
-            // navigation bar constraints
-            navBar.topAnchor.constraint(equalTo: poster.bottomAnchor),
-            navBar.leftAnchor.constraint(equalTo: view.leftAnchor),
-            navBar.rightAnchor.constraint(equalTo: view.rightAnchor),
-            
-            // movie title constraints
-            movieTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            movieTitle.leftAnchor.constraint(equalTo: foregroundPoster.rightAnchor, constant: 16),
-            movieTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // movie released date constraints
-            movieReleasedDate.topAnchor.constraint(equalTo: movieTitle.bottomAnchor, constant: 20),
-            movieReleasedDate.leftAnchor.constraint(equalTo: foregroundPoster.rightAnchor, constant: 16),
-            movieReleasedDate.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // movie rating constraints
-            rating.topAnchor.constraint(equalTo: movieReleasedDate.bottomAnchor, constant: 20),
-            rating.leftAnchor.constraint(equalTo: foregroundPoster.rightAnchor, constant: 16),
-            
-            // star image constraints
-            star.topAnchor.constraint(equalTo: movieReleasedDate.bottomAnchor, constant: 20),
-            star.leftAnchor.constraint(equalTo: rating.rightAnchor, constant: 5),
-            
-            // content view constraints
-            contentView.topAnchor.constraint(equalTo: navBar.bottomAnchor),
-            contentView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            
-        ])
         
         setUp()
     }
@@ -201,13 +90,13 @@ class MovieDetailViewController: UIViewController {
             parent.getFavorite()
         }
         
+        navigationController!.navigationBar.isTranslucent = false
         navigationController?.popViewController(animated: true)
     }
     
     @objc func favBtn(_ sender: UIBarButtonItem) {
         
         changeFav()
-        
     }
     
 

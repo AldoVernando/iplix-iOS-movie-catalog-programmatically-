@@ -10,34 +10,21 @@ import UIKit
 import SDWebImage
 
 class ViewController: UIViewController, NetworkDelegate {
+
+    let customView = HomeView()
+    var tableView: UITableView!
     
-    private let tableView: UITableView = {
-        let tv = UITableView()
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.allowsSelection = false
-        
-        return tv
-    }()
-    
-    var movieToSend: Movie?
-    var type: String = ""
-    var personId: Int = 0
     static let network = NetworkManager()
     var item = 0
+    
+    override func loadView() {
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+        tableView = customView.tableView
         
         setUp()
     }
@@ -124,7 +111,7 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
     }
     
     
-    // perform segue to movie detail
+    // go to movie detail
     func gotoDetail(movie: Movie) {
         
         let vc = MovieDetailViewController()
@@ -133,7 +120,7 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
     }
     
     
-    // perform segue to all movies
+    // go to all movies
     func goToAll(type: String) {
         
         let vc = SeeAllViewController()
@@ -142,7 +129,7 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
      }
     
     
-    // perform segue to person detail
+    // go to person detail
     func goToPerson(id: Int) {
         
         let vc = PersonDetailViewController()

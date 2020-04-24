@@ -9,47 +9,33 @@
 import UIKit
 
 class SeeAllViewController: UIViewController {
-
-    private let collectionView: UICollectionView = {
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = .init(top: 20, left: 20, bottom: 20, right: 20)
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        
-        return cv
-    }()
     
+    let customView = SeeAllView()
+    var collectionView: UICollectionView!
     
     var movies: [Movie] = []
-    
     var network = ViewController.network
     var isWaiting = false
     var page = 1
     var type = ""
-    var movieToSend: Movie?
+    
+    override func loadView() {
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(collectionView)
+        collectionView = customView.collectionView
         
-        NSLayoutConstraint.activate([
-            
-            // collection view constraints
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        let backBtn = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backBtn(_:)) )
         
-        ])
+        navigationItem.leftBarButtonItem = backBtn
         
         setUp()
     }
     
-    @IBAction func backBtn(_ sender: UIBarButtonItem) {
+    @objc func backBtn(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
@@ -186,22 +172,10 @@ extension SeeAllViewController {
     }
     
     
-    // prepare before perform segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToDetail" {
-            if let vc = segue.destination as? MovieDetailViewController {
-                if let movieData = movieToSend {
-                    vc.movie = movieData
-                }
-            }
-        }
-    }
-    
-    
-    // perform segue to movie detail
+    // go to movie detail
     func gotoDetail(movie: Movie) {
-        movieToSend = movie
-        performSegue(withIdentifier:"goToDetail", sender: self)
+        let vc = MovieDetailViewController()
+        vc.movie = movie
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

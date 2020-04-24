@@ -10,48 +10,25 @@ import UIKit
 import RealmSwift
 
 class FavoriteViewController: UIViewController {
-
-    var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    private let message: UILabel = {
-        let label = UILabel()
-        label.text = "You have no favorite movie"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
+    let customView = FavoriteView()
+    var collectionView: UICollectionView!
+    var message: UILabel!
     
     let realm = RealmManager()
     var movies: [FavoriteMovie] = []
     let network = ViewController.network
     var movieToSend: Movie?
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 400)
-        
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.backgroundColor = .white
-        view.addSubview(collectionView)
-        view.addSubview(message)
-        
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            
-            message.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            message.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
+        collectionView = customView.collectionView
+        message = customView.message
         
     }
         
@@ -172,7 +149,6 @@ extension FavoriteViewController {
             
             message.isHidden = false
             collectionView.isHidden = true
-            
         }
         
         
@@ -225,27 +201,15 @@ extension FavoriteViewController {
     }
     
     
-    // prepare before perform segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToDetail" {
-            if let vc = segue.destination as? MovieDetailViewController {
-                if let movieData = movieToSend {
-                    vc.movie = movieData
-                    vc.parentView = self
-                }
-            }
-        }
-    }
-    
-    
-    // perform segue to movie detail
+    // go to movie detail
     func gotoDetail(movie: FavoriteMovie) {
 
         network.getMovieforFav(movieId: String(movie.id)) { response in
             
-            self.movieToSend = response
-            self.performSegue(withIdentifier:"goToDetail", sender: self)
+            let vc = MovieDetailViewController()
+            vc.movie = response
+            vc.parentView = self
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
     }

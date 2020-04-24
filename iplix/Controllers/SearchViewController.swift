@@ -12,50 +12,24 @@ import SDWebImage
 
 class SearchViewController: UIViewController {
     
-//    @IBOutlet weak var searchBar: UISearchBar!
-//    @IBOutlet weak var tableView: PaginatedTableView!
+    let customView = SearchView()
+    var searchBar: UISearchBar!
+    var tableView: PaginatedTableView!
     
-    private let searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.placeholder = "Search movies"
-        search.translatesAutoresizingMaskIntoConstraints = false
-        
-        return search
-    }()
-    
-    private let tableView: PaginatedTableView = {
-        let tv = PaginatedTableView()
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.allowsSelection = false
-        
-        return tv
-    }()
-    
-    var movieToSend: Movie?
     var movies: [Movie] = []
     var firstPage: [Movie] = []
     var network = ViewController.network
     var searchQuery: String = ""
     
+    override func loadView() {
+        view = customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        view.addSubview(searchBar)
-        view.addSubview(tableView)
-        
-        
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            searchBar.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+        searchBar = customView.searchBar
+        tableView = customView.tableView
         
         setUp()
     }
@@ -173,20 +147,6 @@ extension SearchViewController {
     }
     
     
-    // prepare before perform segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToDetail" {
-            if let vc = segue.destination as? MovieDetailViewController {
-                if let movieData = movieToSend {
-                    vc.movie = movieData
-                }
-            }
-        }
-        
-    }
-    
-    
     // dismiss keyboard when tapped out of keyboard
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -213,10 +173,11 @@ extension SearchViewController {
     }
     
     
-    // perform segue to movie detail
+    // go to movie detail
     func gotoDetail(movie: Movie) {
-        movieToSend = movie
-        performSegue(withIdentifier:"goToDetail", sender: self)
+        let vc = MovieDetailViewController()
+        vc.movie = movie
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
