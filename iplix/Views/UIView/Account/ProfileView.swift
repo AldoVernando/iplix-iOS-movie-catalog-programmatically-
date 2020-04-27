@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileView: UIView {
-
+    
     let profileImage: UIImageView = {
         let image = UIImageView()
         image.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -17,9 +17,23 @@ class ProfileView: UIView {
         image.image = UIImage(named: "profile")
         image.clipsToBounds = true
         image.layer.cornerRadius = 60
+        image.isUserInteractionEnabled = true
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
+    }()
+    
+    let editLabel: UIButton = {
+        let button = UIButton()
+        button.setTitle("Edit Profile Image", for: .normal)
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 10)
+        button.layer.opacity = 0.5
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
     }()
     
     let username: UILabel = {
@@ -66,17 +80,17 @@ class ProfileView: UIView {
         return label
     }()
     
-    let editBtn: UIButton = {
-        let button = UIButton()
-        button.setTitle("Edit Profile", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .lightGray
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
+//    let editBtn: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("Edit Profile", for: .normal)
+//        button.setTitleColor(.black, for: .normal)
+//        button.backgroundColor = .lightGray
+//        button.layer.cornerRadius = 10
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return button
+//    }()
+
     let logoutBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Log Out", for: .normal)
@@ -103,12 +117,12 @@ class ProfileView: UIView {
         backgroundColor = .white
         
         addSubview(profileImage)
+        addSubview(editLabel)
         addSubview(username)
         addSubview(emailLabel)
         addSubview(email)
         addSubview(dobLabel)
         addSubview(dob)
-        addSubview(editBtn)
         addSubview(logoutBtn)
         
         NSLayoutConstraint.activate([
@@ -118,6 +132,10 @@ class ProfileView: UIView {
             profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             profileImage.widthAnchor.constraint(equalToConstant: 120),
             profileImage.heightAnchor.constraint(equalToConstant: 120),
+            
+            // edit constraints
+            editLabel.topAnchor.constraint(equalTo: profileImage.topAnchor, constant: 100),
+            editLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             // username constraints
             username.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10),
@@ -146,12 +164,12 @@ class ProfileView: UIView {
             dob.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
             
             // edit button constraints
-            editBtn.topAnchor.constraint(equalTo: dob.bottomAnchor, constant: 100),
-            editBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            editBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
+//            editBtn.topAnchor.constraint(equalTo: dob.bottomAnchor, constant: 100),
+//            editBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+//            editBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
             
             // logout button constraints
-            logoutBtn.topAnchor.constraint(equalTo: editBtn.bottomAnchor, constant: 10),
+            logoutBtn.topAnchor.constraint(equalTo: dob.bottomAnchor, constant: 100),
             logoutBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             logoutBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
             

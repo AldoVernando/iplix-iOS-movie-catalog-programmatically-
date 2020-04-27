@@ -11,6 +11,7 @@ target 'iplix' do
   pod 'PaginatedTableView'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'CryptoSwift'
   pod 'RxSwift'
   pod 'RealmSwift'

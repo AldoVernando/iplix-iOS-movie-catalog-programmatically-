@@ -12,6 +12,9 @@ PODS:
   - Firebase/Database (6.23.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.2.0)
+  - Firebase/Storage (6.23.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 3.6.1)
   - FirebaseAuth (6.5.2):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.6)
@@ -35,6 +38,10 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - leveldb-library (~> 1.22)
+  - FirebaseStorage (3.6.1):
+    - FirebaseAuthInterop (~> 1.1)
+    - FirebaseCore (~> 6.6)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleDataTransport (6.0.0)
   - GoogleDataTransportCCTSupport (3.0.0):
     - GoogleDataTransport (~> 6.0)
@@ -80,6 +87,7 @@ DEPENDENCIES:
   - CryptoSwift
   - Firebase/Auth
   - Firebase/Database
+  - Firebase/Storage
   - PaginatedTableView
   - RealmSwift
   - RxSwift
@@ -98,6 +106,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
+    - FirebaseStorage
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
@@ -123,6 +132,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: b59c024493a409f8aecba02c99928d0d8431d159
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseDatabase: cbf2b9efe39b3f113616a2f1f140839f49d797e0
+  FirebaseStorage: f4f39ae834a7145963b913f54e2f24a9db1d8fac
   GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
   GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
@@ -137,6 +147,6 @@ SPEC CHECKSUMS:
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: 5b892e062974d75e8fb58869f43885b1bb6f1b96
+PODFILE CHECKSUM: 04378afe45419c4f900e4d362a27d47d759a8e6d
 
 COCOAPODS: 1.9.1

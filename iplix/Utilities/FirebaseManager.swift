@@ -17,6 +17,8 @@ class FirebaseManager {
     let dispatchGroup  = DispatchGroup()
     var publishUserId = PublishSubject<String>()
     var publishUser = PublishSubject<User>()
+    let storageRef = Storage.storage().reference()
+
 }
 
 
@@ -81,4 +83,31 @@ extension FirebaseManager {
        }
     }
     
+    
+    // upload photo to storage
+    func uploadPhoto(image: UIImage) {
+        
+        let userId = UserDefaults.standard.string(forKey: "userId")
+            
+        let ref = Storage.storage().reference().child("users").child(String(userId! + ".jpg"))
+        
+        ref.putData(image.pngData()!, metadata: nil) { (metadata, error) in
+            
+            guard metadata != nil else {
+                print("Error occurred: \(String(describing: error))")
+              return
+            }
+
+        }
+        
+    }
+    
+    
+    // get user storage ref
+    func getStorageRef() -> StorageReference {
+        
+        let userId = UserDefaults.standard.string(forKey: "userId")
+        
+        return storageRef.child("users").child(String(userId! + ".jpg"))
+    }
 }

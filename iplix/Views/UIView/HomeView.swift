@@ -12,8 +12,8 @@ class HomeView: UIView {
 
     let tableView: UITableView = {
         let tv = UITableView()
-        tv.translatesAutoresizingMaskIntoConstraints = false
         tv.allowsSelection = false
+        tv.translatesAutoresizingMaskIntoConstraints = false
 
         return tv
     }()

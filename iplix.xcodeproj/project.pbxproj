@@ -679,7 +679,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplixmovie;
 				PRODUCT_NAME = iplix;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -699,7 +699,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplixmovie;
 				PRODUCT_NAME = iplix;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
