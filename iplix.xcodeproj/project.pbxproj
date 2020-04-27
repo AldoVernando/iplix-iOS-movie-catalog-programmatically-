@@ -40,6 +40,8 @@
 		245FD3A5243D883300C6A0D6 /* MovieInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FD3A4243D883300C6A0D6 /* MovieInformationViewController.swift */; };
 		245FD3A7243D8FE600C6A0D6 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */; };
 		24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */; };
+		24AF73602456E77E001B24FF /* LoadingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AF735E2456E77E001B24FF /* LoadingViewCell.swift */; };
+		24AF73612456E77E001B24FF /* LoadingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24AF735F2456E77E001B24FF /* LoadingViewCell.xib */; };
 		24C825FE2440304D004944E8 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C825FC2440304D004944E8 /* PersonCollectionViewCell.swift */; };
 		24C825FF2440304D004944E8 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C825FD2440304D004944E8 /* PersonCollectionViewCell.xib */; };
 		24C8260224403378004944E8 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8260024403378004944E8 /* PersonTableViewCell.swift */; };
@@ -105,6 +107,8 @@
 		245FD3A4243D883300C6A0D6 /* MovieInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInformationViewController.swift; sourceTree = "<group>"; };
 		245FD3A6243D8FE600C6A0D6 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		24A6E66224405517003F6EE6 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		24AF735E2456E77E001B24FF /* LoadingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewCell.swift; sourceTree = "<group>"; };
+		24AF735F2456E77E001B24FF /* LoadingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewCell.xib; sourceTree = "<group>"; };
 		24C825FC2440304D004944E8 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		24C825FD2440304D004944E8 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		24C8260024403378004944E8 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */,
 				24C825FD2440304D004944E8 /* PersonCollectionViewCell.xib */,
 				24C8260124403378004944E8 /* PersonTableViewCell.xib */,
+				24AF735F2456E77E001B24FF /* LoadingViewCell.xib */,
 			);
 			path = UInib;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				2431A50D243C44C000E7A62C /* MovieCollectionViewCell.swift */,
 				24432A55243DB7D400421E35 /* SearchTableViewCell.swift */,
 				240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */,
+				24AF735E2456E77E001B24FF /* LoadingViewCell.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				24C8260324403378004944E8 /* PersonTableViewCell.xib in Resources */,
 				2431A4E6243C34AC00E7A62C /* Assets.xcassets in Resources */,
 				24C825FF2440304D004944E8 /* PersonCollectionViewCell.xib in Resources */,
+				24AF73612456E77E001B24FF /* LoadingViewCell.xib in Resources */,
 				240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */,
 				2431A50C243C447700E7A62C /* PopularViewCell.xib in Resources */,
 				24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */,
@@ -523,6 +530,7 @@
 				24EB60FB244E9F7D0072CB74 /* Helper.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
 				240BD08124481C13009806B2 /* FavoriteViewController.swift in Sources */,
+				24AF73602456E77E001B24FF /* LoadingViewCell.swift in Sources */,
 				24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */,
 				2431A50F243C44C000E7A62C /* MovieCollectionViewCell.swift in Sources */,
 				2431A4F8243C3DF100E7A62C /* Movie.swift in Sources */,
