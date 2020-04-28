@@ -65,6 +65,8 @@ extension RandomMovieTableViewCell {
             self.synopsis.text = response.overview
             if let poster = response.poster_path {
                 self.poster.sd_setImage(with: URL(string: self.network.posterURL + poster))
+            } else {
+                self.poster.image = UIImage(named: "poster")
             }
             
             self.loading.stopAnimating()

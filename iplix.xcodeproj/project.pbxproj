@@ -47,7 +47,6 @@
 		24C8260224403378004944E8 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8260024403378004944E8 /* PersonTableViewCell.swift */; };
 		24C8260324403378004944E8 /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C8260124403378004944E8 /* PersonTableViewCell.xib */; };
 		24C8260524403566004944E8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8260424403566004944E8 /* Person.swift */; };
-		24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DCDCD12444352B00C45497 /* GoogleService-Info.plist */; };
 		24DCDCD424444D8E00C45497 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD324444D8E00C45497 /* AccountViewController.swift */; };
 		24DCDCD6244452C100C45497 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD5244452C100C45497 /* ProfileViewController.swift */; };
 		24DCDCD82444532E00C45497 /* AccountAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */; };
@@ -55,6 +54,7 @@
 		24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCDCDD2444600400C45497 /* RegisterViewController.swift */; };
 		24EB5F8724580FFB000D7529 /* RandomMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB5F8524580FFB000D7529 /* RandomMovieTableViewCell.swift */; };
 		24EB5F8824580FFB000D7529 /* RandomMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24EB5F8624580FFB000D7529 /* RandomMovieTableViewCell.xib */; };
+		24EB5F8A24583F08000D7529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24EB5F8924583F08000D7529 /* GoogleService-Info.plist */; };
 		24EB60FB244E9F7D0072CB74 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB60FA244E9F7D0072CB74 /* Helper.swift */; };
 		24EF234A2452D1070006E4CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF23492452D1070006E4CE /* HomeView.swift */; };
 		24EF234C2452D8EE0006E4CE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EF234B2452D8EE0006E4CE /* FavoriteView.swift */; };
@@ -116,7 +116,6 @@
 		24C8260024403378004944E8 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		24C8260124403378004944E8 /* PersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonTableViewCell.xib; sourceTree = "<group>"; };
 		24C8260424403566004944E8 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		24DCDCD12444352B00C45497 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24DCDCD324444D8E00C45497 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		24DCDCD5244452C100C45497 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		24DCDCD72444532E00C45497 /* AccountAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		24DCDCDD2444600400C45497 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		24EB5F8524580FFB000D7529 /* RandomMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMovieTableViewCell.swift; sourceTree = "<group>"; };
 		24EB5F8624580FFB000D7529 /* RandomMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RandomMovieTableViewCell.xib; sourceTree = "<group>"; };
+		24EB5F8924583F08000D7529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24EB60FA244E9F7D0072CB74 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		24EF23492452D1070006E4CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		24EF234B2452D8EE0006E4CE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				2431A4E5243C34AC00E7A62C /* Assets.xcassets */,
 				2431A4E7243C34AC00E7A62C /* LaunchScreen.storyboard */,
 				2431A4EA243C34AC00E7A62C /* Info.plist */,
-				24DCDCD12444352B00C45497 /* GoogleService-Info.plist */,
+				24EB5F8924583F08000D7529 /* GoogleService-Info.plist */,
 			);
 			path = iplix;
 			sourceTree = "<group>";
@@ -444,8 +444,8 @@
 				24AF73612456E77E001B24FF /* LoadingViewCell.xib in Resources */,
 				24EB5F8824580FFB000D7529 /* RandomMovieTableViewCell.xib in Resources */,
 				240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */,
+				24EB5F8A24583F08000D7529 /* GoogleService-Info.plist in Resources */,
 				2431A50C243C447700E7A62C /* PopularViewCell.xib in Resources */,
-				24DCDCD22444352B00C45497 /* GoogleService-Info.plist in Resources */,
 				24432A58243DB7D400421E35 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,7 +695,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplixmovie;
 				PRODUCT_NAME = iplix;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -715,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aldovernando.iplixmovie;
 				PRODUCT_NAME = iplix;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

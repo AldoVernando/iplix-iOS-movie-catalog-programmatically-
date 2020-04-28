@@ -9,6 +9,7 @@ target 'iplix' do
   pod 'SDWebImage/MapKit'
   pod 'ChameleonFramework/Swift'
   pod 'PaginatedTableView'
+  pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'

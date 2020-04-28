@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>938766252199-g838o8fai63a863sj4840dvcj4tced39.apps.googleusercontent.com</string>
+	<string>938766252199-5ogpmlf62rah3ren27k1mh0dsm7l1frh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.938766252199-g838o8fai63a863sj4840dvcj4tced39</string>
+	<string>com.googleusercontent.apps.938766252199-5ogpmlf62rah3ren27k1mh0dsm7l1frh</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA1SDNWHfba7QqIjXU733xQ5gy7SMf3AJo</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.aldovernando.iplix</string>
+	<string>com.aldovernando.iplixmovie</string>
 	<key>PROJECT_ID</key>
 	<string>iplix-22f10</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:938766252199:ios:f63bb17a7756b6e57e4382</string>
+	<string>1:938766252199:ios:16bcfd9d0b1947bd7e4382</string>
 	<key>DATABASE_URL</key>
 	<string>https://iplix-22f10.firebaseio.com</string>
 </dict>
