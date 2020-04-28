@@ -12,6 +12,8 @@ target 'iplix' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
   pod 'CryptoSwift'
   pod 'RxSwift'
   pod 'RealmSwift'

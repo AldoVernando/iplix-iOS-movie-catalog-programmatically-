@@ -33,6 +33,7 @@ class MovieDetailViewController: UIViewController {
     var isFavorite = false
     var tempFav: FavoriteMovie?
     var parentView: FavoriteViewController?
+    var deviceModel: String?
     
     override func loadView() {
         view = customView

@@ -113,8 +113,7 @@ extension FavoriteViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let padding =  ( collectionView.frame.size.width - 300 ) / 2.0
-        
+        let padding =  ( UIScreen.main.bounds.width - 300 ) / 2.0
         collectionView.contentInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
         
         collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
@@ -135,7 +134,7 @@ extension FavoriteViewController {
             message.isHidden = true
             
             for fav in favs {
-                movies.append(fav)
+                self.movies.append(fav)
             }
             
             DispatchQueue.main.async {

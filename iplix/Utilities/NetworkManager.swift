@@ -124,9 +124,9 @@ extension NetworkManager {
     
     
     // fetch popular persons
-    func getPersons(completion: @escaping ([Person]) -> ()) {
+    func getPersons(page: Int, completion: @escaping ([Person]) -> ()) {
         
-        let finalURL = createPersonURL(type: "popular")
+        let finalURL = createPersonURL(type: "popular", page: page)
         
         AF.request(finalURL, method: .get).responseDecodable(of: PersonResult.self) { response in
                 guard let persons = response.value?.results else { return }
@@ -138,7 +138,7 @@ extension NetworkManager {
     // fetch person detail
     func getPersonDetail(id: Int, completion: @escaping (Person) -> ()) {
         
-        let finalURL = createPersonURL(type: String(id))
+        let finalURL = createPersonURL(type: String(id), page: 1)
         
         AF.request(finalURL, method: .get).responseDecodable(of: Person.self) { response in
             guard let person = response.value else { return }
@@ -168,8 +168,8 @@ extension NetworkManager {
     
     
     // generate person URL
-    func createPersonURL(type: String) -> String{
-        let URL = "\(personURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)"
+    func createPersonURL(type: String, page: Int) -> String{
+        let URL = "\(personURL)/\(type)?\(parameters["apiKey"]!)&\(parameters["language"]!)&page=\(page)"
         
         return URL
     }

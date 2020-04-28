@@ -75,7 +75,7 @@ extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == self.movies.count - 10 && !isWaiting {
+        if indexPath.row == movies.count - 10 && !isWaiting {
           isWaiting = true
           loadMoreData()
         }

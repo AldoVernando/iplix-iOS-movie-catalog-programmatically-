@@ -82,7 +82,7 @@ extension PopularViewCell: UICollectionViewDataSource, UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == self.movies.count && !isWaiting {
+        if indexPath.row == movies.count && !isWaiting {
           isWaiting = true
           loadMoreData()
         }
