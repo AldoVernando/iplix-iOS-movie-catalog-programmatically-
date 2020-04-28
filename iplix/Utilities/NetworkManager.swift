@@ -50,6 +50,22 @@ extension NetworkManager {
     }
     
     
+    // fetch random movie
+    func getRandomMovie(completion: @escaping (Movie) -> ()) {
+        
+        let randomPage = Int.random(in: 1...500)
+        
+        let randomMovie = Int.random(in: 0...19)
+        
+        let finalURL = "https://api.themoviedb.org/3/discover/movie?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US&sort_by=popularity.desc&include_video=true&vote_average.gte=7.0&page=\(randomPage)"
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
+            guard let movies = response.value?.results else { return }
+            completion(movies[randomMovie])
+        }
+    }
+    
+    
     // fetch movie detail
     func getMovieDetail(movieId: String, completion: @escaping (MovieDetail) -> ()) {
         

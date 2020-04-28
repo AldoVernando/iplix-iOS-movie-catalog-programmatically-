@@ -43,6 +43,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "randomCell",for: indexPath) as! RandomMovieTableViewCell
+            cell.delegate = self
+            return cell
+        }
+        else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "popularCell",for: indexPath) as! PopularViewCell
             cell.categoryTitle.text = "Popular"
             cell.loadMovies(typeMovie: "popular")
@@ -50,13 +55,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.type = "popular"
             return cell
         }
-        else if indexPath.row == 1 {
+        else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as! PersonTableViewCell
             cell.delegate = self
             
             return cell
         }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "popularCell", for: indexPath) as! PopularViewCell
             cell.categoryTitle.text = "Now Playing"
             cell.loadMovies(typeMovie: "now_playing")
@@ -64,7 +69,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.type = "now_playing"
             return cell
         }
-        else if indexPath.row == 3 {
+        else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "popularCell", for: indexPath) as! PopularViewCell
             cell.categoryTitle.text = "Top Rated"
             cell.loadMovies(typeMovie: "top_rated")
@@ -80,10 +85,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 1 {
+        if indexPath.row == 2 {
             return 180
         }
-        return 300
+        if indexPath.row != 0 {
+            return 295
+        }
+        return UITableView.automaticDimension
     }
 }
 
@@ -99,14 +107,18 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 44.0;
+        
         tableView.register(UINib(nibName: "PopularViewCell", bundle: nil), forCellReuseIdentifier: "popularCell")
         tableView.register(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "personCell")
+        tableView.register(UINib(nibName: "RandomMovieTableViewCell", bundle: nil), forCellReuseIdentifier: "randomCell")
     }
     
     
     // reload table view
     func reloadTableView() {
-        item = 4
+        item = 5
         tableView.reloadData()
     }
     
