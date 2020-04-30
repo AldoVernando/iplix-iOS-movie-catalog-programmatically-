@@ -1,17 +1,19 @@
 //
-//  SeeAllViewController.swift
+//  DiscoverViewController.swift
 //  iplix
 //
-//  Created by TEMP on 4/9/20.
+//  Created by TEMP on 4/30/20.
 //  Copyright © 2020 aldovernando. All rights reserved.
 //
 
 import UIKit
 
-class SeeAllViewController: UIViewController {
-    
-    let customView = SeeAllView()
+class DiscoverViewController: UIViewController {
+
+    let customView = DiscoverView()
     var collectionView: UICollectionView!
+    var filterBtn: UIButton!
+    var message: UILabel!
     
     var movies: [Movie] = []
     var network = ViewController.network
@@ -27,8 +29,12 @@ class SeeAllViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView = customView.collectionView
+        filterBtn = customView.filterBtn
+        message = customView.message
         
         let backBtn = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(backBtn(_:)) )
+        
+        filterBtn.addTarget(self, action: #selector(filterBtn(_:)), for: .touchUpInside)
         
         navigationItem.leftBarButtonItem = backBtn
         
@@ -39,11 +45,17 @@ class SeeAllViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func filterBtn(_ sender: UIButton) {
+        let vc = FilterViewController()
+        vc.discover = self
+        present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 
 // MARK: UICollectionView
-extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
@@ -101,51 +113,35 @@ extension SeeAllViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 
 // MARK: Functions
-extension SeeAllViewController {
+extension DiscoverViewController {
     
     
     // set up view controller
     func setUp() {
         
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        setTitle()
         loadMovies()
         collectionView.delegate = self
         collectionView.dataSource = self
+        filterBtn.layer.cornerRadius = 25
         
         collectionView.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
-    }
-    
-    // set navigation title
-    func setTitle() {
-        
-        var title: String = ""
-        
-        switch type {
-        case "popular":
-            title = "Popular Movies"
-            break
-        case "now_playing":
-            title = "Now Playing Movies"
-            break
-        case "top_rated":
-            title = "Top Rated Movies"
-            break
-        default:
-            title = "Movies"
-            break
-        }
-        
-        navigationItem.title = title
-        
     }
     
     
     // load movies by type and page
     func loadMovies() {
-        network.getMovies(typeMovie: type, page: page) { response in
+        page = 1
+        network.getDiscoverMovies(page: 1)  { response in
             self.movies = response
             DispatchQueue.main.async {
+                if self.movies.isEmpty {
+                    self.message.isHidden = false
+                    self.collectionView.isHidden = true
+                } else {
+                    self.message.isHidden = true
+                    self.collectionView.isHidden = false
+                }
+                
                 self.collectionView.reloadData()
             }
         }
@@ -159,7 +155,7 @@ extension SeeAllViewController {
             
             var newData: [Movie] = []
             
-            network.getMovies(typeMovie: type, page: page) { response in
+            network.getDiscoverMovies(page: page) { response in
                 newData = response
                 if !newData.isEmpty {
                     DispatchQueue.main.async {
@@ -180,4 +176,5 @@ extension SeeAllViewController {
         vc.movie = movie
         navigationController?.pushViewController(vc, animated: true)
     }
+
 }

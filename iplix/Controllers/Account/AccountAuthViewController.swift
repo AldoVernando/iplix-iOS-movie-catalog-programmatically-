@@ -40,15 +40,15 @@ class AccountAuthViewController: UIViewController {
             case 0:
                 let vc = LoginViewController()
                 
-                self.addChild(vc)
-                self.changeContentView(view: vc.view)
+                addChild(vc)
+                changeContentView(view: vc.view)
                 break
             
             case 1:
                 let vc = RegisterViewController()
                 
-                self.addChild(vc)
-                self.changeContentView(view: vc.view)
+                addChild(vc)
+                changeContentView(view: vc.view)
                 break
             
             default:
@@ -69,8 +69,8 @@ extension AccountAuthViewController {
         segmentedControl.selectedSegmentIndex = 0
         let vc = LoginViewController()
 
-        self.addChild(vc)
-        self.changeContentView(view: vc.view)
+        addChild(vc)
+        changeContentView(view: vc.view)
     }
     
     

@@ -12,6 +12,11 @@
 		240229CE243F16F400DBF3A9 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CD243F16F400DBF3A9 /* Review.swift */; };
 		240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */; };
 		240229D2243F196500DBF3A9 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */; };
+		2406BF52245A717A00E484AB /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2406BF51245A717900E484AB /* DiscoverViewController.swift */; };
+		2406BF54245A719700E484AB /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2406BF53245A719700E484AB /* DiscoverView.swift */; };
+		2406BF56245A7D3100E484AB /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2406BF55245A7D3100E484AB /* FilterViewController.swift */; };
+		2406BF59245A8FC800E484AB /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2406BF57245A8FC800E484AB /* GenreCollectionViewCell.swift */; };
+		2406BF5A245A8FC800E484AB /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2406BF58245A8FC800E484AB /* GenreCollectionViewCell.xib */; };
 		240BD08124481C13009806B2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240BD08024481C13009806B2 /* FavoriteViewController.swift */; };
 		2411612924459A8900854B89 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612824459A8800854B89 /* FirebaseManager.swift */; };
 		2411612B24459E7E00854B89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411612A24459E7E00854B89 /* User.swift */; };
@@ -79,6 +84,11 @@
 		240229CD243F16F400DBF3A9 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		240229CF243F196500DBF3A9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		240229D0243F196500DBF3A9 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		2406BF51245A717900E484AB /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		2406BF53245A719700E484AB /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		2406BF55245A7D3100E484AB /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		2406BF57245A8FC800E484AB /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		2406BF58245A8FC800E484AB /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
 		240BD08024481C13009806B2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		2411612824459A8800854B89 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2411612A24459E7E00854B89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -215,6 +225,8 @@
 				240229C9243EE45500DBF3A9 /* SeeAllViewController.swift */,
 				240BD08024481C13009806B2 /* FavoriteViewController.swift */,
 				2443F61C24500006004A4D9A /* TabBarController.swift */,
+				2406BF51245A717900E484AB /* DiscoverViewController.swift */,
+				2406BF55245A7D3100E484AB /* FilterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +268,7 @@
 				24C825FD2440304D004944E8 /* PersonCollectionViewCell.xib */,
 				24C8260124403378004944E8 /* PersonTableViewCell.xib */,
 				24AF735F2456E77E001B24FF /* LoadingViewCell.xib */,
+				2406BF58245A8FC800E484AB /* GenreCollectionViewCell.xib */,
 			);
 			path = UInib;
 			sourceTree = "<group>";
@@ -323,6 +336,8 @@
 				24EF234B2452D8EE0006E4CE /* FavoriteView.swift */,
 				24EF234D2452DDDA0006E4CE /* SearchView.swift */,
 				24EF234F2452E42A0006E4CE /* SeeAllView.swift */,
+				2406BF53245A719700E484AB /* DiscoverView.swift */,
+				2406BF57245A8FC800E484AB /* GenreCollectionViewCell.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -440,6 +455,7 @@
 				2431A4E9243C34AC00E7A62C /* LaunchScreen.storyboard in Resources */,
 				24C8260324403378004944E8 /* PersonTableViewCell.xib in Resources */,
 				2431A4E6243C34AC00E7A62C /* Assets.xcassets in Resources */,
+				2406BF5A245A8FC800E484AB /* GenreCollectionViewCell.xib in Resources */,
 				24C825FF2440304D004944E8 /* PersonCollectionViewCell.xib in Resources */,
 				24AF73612456E77E001B24FF /* LoadingViewCell.xib in Resources */,
 				24EB5F8824580FFB000D7529 /* RandomMovieTableViewCell.xib in Resources */,
@@ -499,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2406BF59245A8FC800E484AB /* GenreCollectionViewCell.swift in Sources */,
 				24DCDCDE2444600400C45497 /* RegisterViewController.swift in Sources */,
 				24EB5F8724580FFB000D7529 /* RandomMovieTableViewCell.swift in Sources */,
 				24EF23562452E7A60006E4CE /* PersonDetailView.swift in Sources */,
@@ -522,6 +539,7 @@
 				240229CC243F164600DBF3A9 /* MovieReviewViewController.swift in Sources */,
 				2431A4FE243C41C800E7A62C /* MovieDetailViewController.swift in Sources */,
 				2431A4FA243C3E0100E7A62C /* Genre.swift in Sources */,
+				2406BF54245A719700E484AB /* DiscoverView.swift in Sources */,
 				24432A54243DAB3D00421E35 /* SearchViewController.swift in Sources */,
 				24432A57243DB7D400421E35 /* SearchTableViewCell.swift in Sources */,
 				240229CE243F16F400DBF3A9 /* Review.swift in Sources */,
@@ -534,6 +552,7 @@
 				2443F61D24500006004A4D9A /* TabBarController.swift in Sources */,
 				24EF235A2452EFE60006E4CE /* MovieAboutView.swift in Sources */,
 				24A6E66324405517003F6EE6 /* PersonDetailViewController.swift in Sources */,
+				2406BF52245A717A00E484AB /* DiscoverViewController.swift in Sources */,
 				24EF234A2452D1070006E4CE /* HomeView.swift in Sources */,
 				24EB60FB244E9F7D0072CB74 /* Helper.swift in Sources */,
 				2431A4DF243C34A900E7A62C /* SceneDelegate.swift in Sources */,
@@ -546,6 +565,7 @@
 				2431A50B243C447700E7A62C /* PopularViewCell.swift in Sources */,
 				240229CA243EE45500DBF3A9 /* SeeAllViewController.swift in Sources */,
 				240229D1243F196500DBF3A9 /* ReviewTableViewCell.swift in Sources */,
+				2406BF56245A7D3100E484AB /* FilterViewController.swift in Sources */,
 				24EF234E2452DDDA0006E4CE /* SearchView.swift in Sources */,
 				2439FA70244D693600E5DDFB /* Extensions.swift in Sources */,
 				24DCDCDC24445FF200C45497 /* LoginViewController.swift in Sources */,

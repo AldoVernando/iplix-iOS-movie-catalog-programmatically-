@@ -44,7 +44,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         
         let imageRef = firebase.getStorageRef()
         imageRef.downloadURL(completion: { (url, error) in
-            self.profileImage.sd_setImage(with: url!, placeholderImage: UIImage(named: "profile"))
+            
+            if url != nil {
+                self.profileImage.sd_setImage(with: url, placeholderImage: UIImage(named: "profile"))
+            }
         })
         
         imagePicker.delegate = self

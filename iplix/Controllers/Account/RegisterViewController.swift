@@ -34,6 +34,9 @@ class RegisterViewController: UIViewController {
         email = customView.email
         password = customView.password
         confirmationPassword = customView.confirmationPassword
+        registerBtn = customView.registerBtn
+        
+        registerBtn.addTarget(self, action: #selector(registerBtn(_:)), for: .touchUpInside)
         
         setUp()
     }
@@ -50,7 +53,7 @@ class RegisterViewController: UIViewController {
         let passText = password.text
         
         if validate() {
-        
+            
             let user = User(username: usernameText!, dob: dobText!, email: emailText!, password: passText!)
             firebase.createUser(user: user, vc: self)
             
@@ -159,13 +162,13 @@ extension RegisterViewController {
        let formatter = DateFormatter()
        formatter.dateFormat = "dd/MM/yyyy"
        dob.text = formatter.string(from: datePicker.date)
-       self.view.endEditing(true)
+       view.endEditing(true)
     }
 
     
     // when cancel button clicked
     @objc func cancelDatePicker(){
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
 }

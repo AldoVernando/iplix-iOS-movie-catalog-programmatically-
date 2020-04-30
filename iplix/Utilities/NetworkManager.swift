@@ -22,6 +22,9 @@ class NetworkManager {
         "apiKey": "api_key=011476f22113ee2ae9d19f4d511997bc",
         "language": "language=en-US"
     ]
+    
+    var filterGenre:[Genre] = []
+    
 
     init() {
         getGenres() { response in
@@ -54,10 +57,9 @@ extension NetworkManager {
     func getRandomMovie(completion: @escaping (Movie) -> ()) {
         
         let randomPage = Int.random(in: 1...500)
-        
         let randomMovie = Int.random(in: 0...19)
         
-        let finalURL = "https://api.themoviedb.org/3/discover/movie?api_key=011476f22113ee2ae9d19f4d511997bc&language=en-US&sort_by=popularity.desc&vote_average.gte=7.0&page=\(randomPage)"
+        let finalURL = "https://api.themoviedb.org/3/discover/movie?\(String(describing: parameters["apiKey"]!))&\(String(describing: parameters["language"]!))&sort_by=popularity.desc&vote_average.gte=7.0&page=\(randomPage)"
         
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
             guard let movies = response.value?.results else { return }
@@ -119,6 +121,22 @@ extension NetworkManager {
         } else {
             finalURL = createMovieURL(type: "upcoming", page: page)
         }
+        
+        AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
+            guard let movies = response.value?.results else { return }
+            completion(movies)
+        }
+    }
+    
+    
+    // fetch discover movie list
+    func getDiscoverMovies(page: Int, completion: @escaping ([Movie]) -> ()) {
+        
+        let param = createFilterParam()
+        
+        let finalURL = "https://api.themoviedb.org/3/discover/movie?\(String(describing: parameters["apiKey"]!))&sort_by=popularity.desc&\(String(describing: parameters["language"]!))&page=\(page)" + param
+        
+        print(finalURL)
         
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
             guard let movies = response.value?.results else { return }
@@ -196,6 +214,30 @@ extension NetworkManager {
         let URL = "https://api.themoviedb.org/3/movie/\(id)/videos?\(parameters["apiKey"]!)"
         
         return URL
+    }
+    
+    
+    // generate filter params
+    func createFilterParam() -> String {
+        var genreParam = ""
+        
+        if !filterGenre.isEmpty {
+        
+            for (index,genre) in filterGenre.enumerated() {
+                if index == 0 {
+                    genreParam += "&with_genres="
+                }
+                else {
+                    genreParam += ","
+                }
+                genreParam += String(genre.id)
+            }
+            
+            
+        }
+        let param = genreParam
+        
+        return param
     }
     
 }

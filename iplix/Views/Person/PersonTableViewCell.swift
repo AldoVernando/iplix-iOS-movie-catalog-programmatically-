@@ -93,7 +93,7 @@ extension PersonTableViewCell {
     
     // load more person data
     func loadMoreData() {
-        if self.isWaiting {
+        if isWaiting {
             page += 1
             
             var newData: [Person] = []

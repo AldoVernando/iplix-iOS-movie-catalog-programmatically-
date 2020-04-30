@@ -54,13 +54,13 @@ extension AccountViewController {
         if UserDefaults.standard.string(forKey: "userId") == nil {
             let vc = AccountAuthViewController()
             navigationItem.title = "Account"
-            self.addChild(vc)
-            self.changeContentView(view: vc.view)
+            addChild(vc)
+            changeContentView(view: vc.view)
         } else {
             let vc = ProfileViewController()
             navigationItem.title = "Profile"
-            self.addChild(vc)
-            self.changeContentView(view: vc.view)
+            addChild(vc)
+            changeContentView(view: vc.view)
         }
         
     }
@@ -72,8 +72,8 @@ extension AccountViewController {
         let vc = ProfileViewController()
         navigationItem.title = "Profile"
         
-        self.addChild(vc)
-        self.changeContentView(view: vc.view)
+        addChild(vc)
+        changeContentView(view: vc.view)
     }
     
     

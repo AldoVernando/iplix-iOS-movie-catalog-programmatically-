@@ -27,13 +27,16 @@ class TabBarController: UITabBarController {
         let homeController = ViewController()
         homeController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         
+        let discoverController = DiscoverViewController()
+        discoverController.tabBarItem = UITabBarItem(title: "Discover", image: UIImage(systemName: "wand.and.stars"), tag: 1)
+        
         let favoriteController = FavoriteViewController()
-        favoriteController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark.fill"), tag: 1)
+        favoriteController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark.fill"), tag: 2)
         
         let searchController = SearchViewController()
-        searchController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2)
+        searchController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 3)
         
-        let tabBarList = [homeController, favoriteController, searchController]
+        let tabBarList = [homeController, discoverController, favoriteController, searchController]
         
         viewControllers = tabBarList
     }
