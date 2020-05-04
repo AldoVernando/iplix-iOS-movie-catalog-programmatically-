@@ -136,8 +136,6 @@ extension NetworkManager {
         
         let finalURL = "https://api.themoviedb.org/3/discover/movie?\(String(describing: parameters["apiKey"]!))&sort_by=popularity.desc&\(String(describing: parameters["language"]!))&page=\(page)" + param
         
-        print(finalURL)
-        
         AF.request(finalURL, method: .get).responseDecodable(of: Results.self) { response in
             guard let movies = response.value?.results else { return }
             completion(movies)

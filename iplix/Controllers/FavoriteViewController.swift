@@ -19,6 +19,7 @@ class FavoriteViewController: UIViewController {
     var movies: [FavoriteMovie] = []
     let network = ViewController.network
     var movieToSend: Movie?
+    var first = true
     
     override func loadView() {
         view = customView
@@ -139,9 +140,6 @@ extension FavoriteViewController {
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
-                if favs.count > 1 {
-                    self.collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: true)
-                }
             }
             
         } else {
@@ -159,7 +157,7 @@ extension FavoriteViewController {
     func setCollectionLooks() {
         let centerX = collectionView.center.x
         
-            // only perform the scaling on cells that are visible on screen
+        // only perform the scaling on cells that are visible on screen
         for cell in collectionView.visibleCells {
             // coordinate of the cell in the viewcontroller's root view coordinate space
             let basePosition = cell.convert(CGPoint.zero, to: self.view)
@@ -179,9 +177,7 @@ extension FavoriteViewController {
             
             // Transform the cell size based on the scale
             cell.transform = CGAffineTransform(scaleX: scale, y: scale)
-            
-            let movieCell = cell as! MovieCollectionViewCell
-            movieCell.alpha = changeSizeScaleToAlphaScale(scale)
+            cell.alpha = changeSizeScaleToAlphaScale(scale)
 
         }
     }

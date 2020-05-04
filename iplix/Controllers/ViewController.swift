@@ -85,12 +85,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 2 {
-            return 180
-        }
-        if indexPath.row != 0 {
-            return 295
-        }
         return UITableView.automaticDimension
     }
 }
@@ -106,9 +100,6 @@ extension ViewController: PopularViewCellDelegate, PersonTableViewDelegate {
         ViewController.network.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
-        
-        tableView.rowHeight = UITableView.automaticDimension;
-        tableView.estimatedRowHeight = 44.0;
         
         tableView.register(UINib(nibName: "PopularViewCell", bundle: nil), forCellReuseIdentifier: "popularCell")
         tableView.register(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "personCell")

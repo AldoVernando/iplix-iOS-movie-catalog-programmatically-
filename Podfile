@@ -19,5 +19,6 @@ target 'iplix' do
   pod 'RxSwift'
   pod 'RealmSwift'
   pod "YoutubePlayer-in-WKWebView"
+  pod 'SwiftRangeSlider'
 
 end

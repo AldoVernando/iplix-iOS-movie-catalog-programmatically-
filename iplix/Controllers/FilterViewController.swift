@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftRangeSlider
 
 class FilterViewController: UIViewController {
 
@@ -39,6 +40,20 @@ class FilterViewController: UIViewController {
         return label
     }()
     
+    let sliderRating: RangeSlider = {
+        let slider = RangeSlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 10
+        slider.knobTintColor = .systemOrange
+        slider.lowerValue = 2.5
+        slider.upperValue = 7.5
+        slider.stepValue = 0.1
+        slider.trackThickness = 2.5
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        
+        return slider
+    }()
+    
     let applyBtn: UIButton = {
         let button = UIButton()
         button.setTitle("Apply", for: .normal)
@@ -60,6 +75,7 @@ class FilterViewController: UIViewController {
         view.addSubview(closeBtn)
         view.addSubview(genre)
         view.addSubview(collectionView)
+//        view.addSubview(sliderRating)
         view.addSubview(applyBtn)
         
         NSLayoutConstraint.activate([
@@ -78,6 +94,11 @@ class FilterViewController: UIViewController {
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
             collectionView.bottomAnchor.constraint(equalTo: applyBtn.topAnchor, constant: -100),
+            
+            // slider rating constraints
+//            sliderRating.bottomAnchor.constraint(equalTo: applyBtn.topAnchor, constant: -100),
+//            sliderRating.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+//            sliderRating.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
          
             // apply button constraints
             applyBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
