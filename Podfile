@@ -18,7 +18,6 @@ target 'iplix' do
   pod 'CryptoSwift'
   pod 'RxSwift'
   pod 'RealmSwift'
-  pod "YoutubePlayer-in-WKWebView"
-  pod 'SwiftRangeSlider'
-
+  pod 'YoutubePlayer-in-WKWebView'
+  
 end

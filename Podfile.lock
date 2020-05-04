@@ -127,7 +127,6 @@ PODS:
   - SDWebImage/Core (5.7.3)
   - SDWebImage/MapKit (5.7.3):
     - SDWebImage/Core
-  - SwiftRangeSlider (2.0.0)
   - YoutubePlayer-in-WKWebView (0.3.4)
 
 DEPENDENCIES:
@@ -144,7 +143,6 @@ DEPENDENCIES:
   - RealmSwift
   - RxSwift
   - SDWebImage/MapKit
-  - SwiftRangeSlider
   - YoutubePlayer-in-WKWebView
 
 SPEC REPOS:
@@ -179,7 +177,6 @@ SPEC REPOS:
     - RealmSwift
     - RxSwift
     - SDWebImage
-    - SwiftRangeSlider
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
@@ -213,9 +210,8 @@ SPEC CHECKSUMS:
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
-  SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: 61fdb2d40a80d3c9deb7a026272cef9e62a7c6a4
+PODFILE CHECKSUM: d96af58b518589ebcc647fbf2a49b28cc9be89a4
 
 COCOAPODS: 1.9.1

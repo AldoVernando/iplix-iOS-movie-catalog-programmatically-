@@ -7,111 +7,43 @@
 //
 
 import UIKit
-import SwiftRangeSlider
 
 class FilterViewController: UIViewController {
 
-    let closeBtn: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = .init(top: 5, left: 5, bottom: 5, right: 5)
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        
-        return cv
-    }()
-    
-    let genre: UILabel = {
-        let label = UILabel()
-        label.text = "Genres"
-        label.font = .systemFont(ofSize: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    let sliderRating: RangeSlider = {
-        let slider = RangeSlider()
-        slider.minimumValue = 0
-        slider.maximumValue = 10
-        slider.knobTintColor = .systemOrange
-        slider.lowerValue = 2.5
-        slider.upperValue = 7.5
-        slider.stepValue = 0.1
-        slider.trackThickness = 2.5
-        slider.translatesAutoresizingMaskIntoConstraints = false
-        
-        return slider
-    }()
-    
-    let applyBtn: UIButton = {
-        let button = UIButton()
-        button.setTitle("Apply", for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = #colorLiteral(red: 0.3507073532, green: 0.7858502538, blue: 0.7276070304, alpha: 1)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
+    let customView = FilterView()
+    var closeBtn: UIButton!
+    var collectionView: UICollectionView!
+    var ratingValue: UILabel!
+    var sliderRating: UISlider!
+    var resetBtn: UIButton!
+    var applyBtn: UIButton!
 
     let network = ViewController.network
     var discover: DiscoverViewController?
+    var currentRating: Float = 0
+    var currentGenre: [Genre] = []
+    
+    override func loadView() {
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-        
-        view.addSubview(closeBtn)
-        view.addSubview(genre)
-        view.addSubview(collectionView)
-//        view.addSubview(sliderRating)
-        view.addSubview(applyBtn)
-        
-        NSLayoutConstraint.activate([
-        
-            // close button constraints
-            closeBtn.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            closeBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            
-            // genre label constraints
-            genre.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
-            genre.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            genre.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            // collection view constraints
-            collectionView.topAnchor.constraint(equalTo: genre.bottomAnchor, constant: 16),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: applyBtn.topAnchor, constant: -100),
-            
-            // slider rating constraints
-//            sliderRating.bottomAnchor.constraint(equalTo: applyBtn.topAnchor, constant: -100),
-//            sliderRating.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-//            sliderRating.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-         
-            // apply button constraints
-            applyBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            applyBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            applyBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            
-            
-        ])
+        closeBtn = customView.closeBtn
+        collectionView = customView.collectionView
+        ratingValue = customView.ratingValue
+        sliderRating = customView.sliderRating
+        resetBtn = customView.resetBtn
+        applyBtn = customView.applyBtn
         
         closeBtn.addTarget(self, action: #selector(closeBtn(_:)), for: .touchUpInside)
+        resetBtn.addTarget(self, action: #selector(resetBtn(_:)), for: .touchUpInside)
         applyBtn.addTarget(self, action: #selector(applyBtn(_:)), for: .touchUpInside)
+        sliderRating.addTarget(self, action: #selector(ratingChange(_:)), for: .valueChanged)
         
-        applyBtn.layer.cornerRadius = 10
+        ratingValue.text! += String(network.rating)
+        sliderRating.value = network.rating
         
         collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "genreCell")
         
@@ -120,11 +52,32 @@ class FilterViewController: UIViewController {
         
     }
 
+    @objc func ratingChange(_ sender: UISlider) {
+        ratingValue.text = "\u{2265} " + String(format: "%.1f", sender.value)
+        currentRating = Float(String(format: "%.1f", sender.value)) ?? 0
+    }
+    
     @objc func closeBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func resetBtn(_ sender: UIButton) {
+        currentGenre.removeAll()
+        currentRating = 0
+        
+        for cell in collectionView.visibleCells {
+            let genreCell = cell as! GenreCollectionViewCell
+            genreCell.genre.backgroundColor = .systemGray4
+        }
+        
+        sliderRating.value = 0
+        ratingValue.text = "\u{2265} 0"
+    }
+    
     @objc func applyBtn(_ sender: UIButton) {
+        
+        network.rating = currentRating
+        network.filterGenre = currentGenre
         
         if let par = discover {
             par.loadMovies()
@@ -155,6 +108,7 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
         for genre in filterGenre {
             if genreLabel == genre.name {
                 cell.genre.backgroundColor = .systemOrange
+                currentGenre.append(genre)
             }
         }
         
@@ -178,12 +132,12 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
             
             if !genre.isEmpty {
                 
-                let updated = network.filterGenre.filter({ $0.id != selectedGenre.id })
-                network.filterGenre = updated
+                let updated = currentGenre.filter({ $0.id != selectedGenre.id })
+                currentGenre = updated
                 
                 cell.genre.backgroundColor = .systemGray4
             } else {
-                network.filterGenre.append(selectedGenre)
+                currentGenre.append(selectedGenre)
 
                 cell.genre.backgroundColor = .systemOrange
             }

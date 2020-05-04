@@ -24,6 +24,7 @@ class NetworkManager {
     ]
     
     var filterGenre:[Genre] = []
+    var rating: Float = 0
     
 
     init() {
@@ -233,7 +234,10 @@ extension NetworkManager {
             
             
         }
-        let param = genreParam
+        
+        let ratingParam = "&vote_average.gte=\(rating)"
+        
+        let param = genreParam + ratingParam
         
         return param
     }
